@@ -9,4 +9,5 @@
 
 window.GALLERY = [
   {src: "gallery/phd-defence-iit-mandi.jpg", caption: "PhD thesis defence: Fracture and Vibration Analysis of Orthotropic Composites using Higher-Order XFEM", place: "IIT Mandi", date: "Jan 2026"},
+  {src: "gallery/efpm-2024-kmutnb-group.jpg", caption: "Invited speaker at EFPM'24, International Conference on Eco-Friendly Fibers and Polymeric Materials", place: "KMUTNB, Bangkok, Thailand", date: "Feb 2024"},
 ];
