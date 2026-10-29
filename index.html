@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Kishan Dwivedi</title>
+<meta name="description" content="Dr. Kishan Dwivedi — Postdoctoral Researcher at Nazarbayev University. Computational mechanics, higher-order XFEM, fracture, vibration and impact of composite laminates and sandwich structures.">
+<meta name="keywords" content="Kishan Dwivedi, XFEM, HOXFEM, composites, fracture mechanics, sandwich structures, impact, Abaqus, IIT Mandi, Nazarbayev University">
+<meta name="author" content="Kishan Dwivedi">
+<meta property="og:title" content="Dr. Kishan Dwivedi — Computational Mechanics of Composites">
+<meta property="og:description" content="Postdoctoral Researcher, Nazarbayev University. Higher-order XFEM, fracture, vibration and impact of composite structures.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="https://kishaniitmandid20017-tech.github.io/photo.jpg">
+<meta property="og:url" content="https://kishaniitmandid20017-tech.github.io/">
+<link rel="canonical" href="https://kishaniitmandid20017-tech.github.io/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23a3122a'/><text x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'>KD</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kishan Dwivedi",
+  "honorificPrefix": "Dr.",
+  "jobTitle": "Postdoctoral Researcher",
+  "affiliation": {"@type": "Organization", "name": "Nazarbayev University"},
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Mandi"},
+    {"@type": "CollegeOrUniversity", "name": "National Institute of Technology Srinagar"}
+  ],
+  "email": ["mailto:kishan.dwivedi@nu.edu.kz", "mailto:kishaniitmandid20017@gmail.com"],
+  "image": "https://kishaniitmandid20017-tech.github.io/photo.jpg",
+  "url": "https://kishaniitmandid20017-tech.github.io/",
+  "knowsAbout": ["Finite Element Method", "Extended Finite Element Method", "Composite Materials", "Fracture Mechanics", "Sandwich Structures", "Impact Mechanics", "Machine Learning"],
+  "sameAs": [
+    "https://scholar.google.com/citations?user=7P_I0AYAAAAJ&hl=en",
+    "https://www.researchgate.net/profile/Kishan-Dwivedi",
+    "https://www.linkedin.com/in/dr-kishan-dwivedi-3685a0258/"
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#faf8f5; --surface:#ffffff; --surface-2:#f3f0eb; --text:#1d1d1f; --muted:#5d5f66; --faint:#8a8c93;
+  --line:#e6e2db; --accent:#a3122a; --accent-soft:#fbe9ec; --accent-ink:#7d0d20; --accent2:#1f63d6; --accent3:#d9822b; --chip:#f1eee9;
+  --grad:linear-gradient(90deg,#a3122a 0%,#d9531e 45%,#c8952c 100%);
+  --shadow:0 1px 2px rgba(20,20,30,.04),0 10px 30px rgba(20,20,30,.07);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif; --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --display:"Playfair Display",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111215; --surface:#191a1e; --surface-2:#1f2126; --text:#ececef; --muted:#a6a8b0; --faint:#7c7e86;
+    --line:#2b2d33; --accent:#ef5a6f; --accent-soft:#3a1c22; --accent-ink:#ff8a9a; --accent2:#6ea8fe; --accent3:#f0a656; --chip:#24262c;
+    --grad:linear-gradient(90deg,#ff6b7f 0%,#ff8a4c 45%,#f2c46b 100%);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111215; --surface:#191a1e; --surface-2:#1f2126; --text:#ececef; --muted:#a6a8b0; --faint:#7c7e86;
+  --line:#2b2d33; --accent:#ef5a6f; --accent-soft:#3a1c22; --accent-ink:#ff8a9a; --accent2:#6ea8fe; --accent3:#f0a656; --chip:#24262c;
+  --grad:linear-gradient(90deg,#ff6b7f 0%,#ff8a4c 45%,#f2c46b 100%);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-family:var(--display);font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand:hover{text-decoration:none}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;padding:6px 11px;border-radius:8px;color:var(--muted);font-size:14.5px;font-weight:500}
+.nav ul a:hover,.nav ul a.active{color:var(--text);background:var(--surface-2);text-decoration:none}
+.nav-actions{display:flex;align-items:center;gap:6px}
+.icon-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--text);display:inline-grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:18px;height:18px}
+#menuBtn{display:none}
+@media (max-width:880px){
+  #menuBtn{display:inline-grid}
+  .nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 16px 14px;box-shadow:var(--shadow)}
+  .nav ul.open{display:flex}
+  .nav ul a{padding:10px 12px;font-size:16px}
+}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:46px 0 30px;text-align:center}
+.hero>.wrap{position:relative;z-index:1}
+.hero-mesh{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.8;
+  -webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 42%,transparent 30%,#000 80%);mask-image:radial-gradient(ellipse 60% 70% at 50% 42%,transparent 30%,#000 80%)}
+/* portrait framed by a tubular-sandwich cross-section (face sheets + power-law corrugated core) */
+.orbit{position:relative;width:300px;height:300px;margin:0 auto}
+.orbit svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.orbit .face{fill:none;stroke:var(--text);stroke-width:3.2;opacity:.85}
+.orbit .core{fill:none;stroke:url(#coreGrad);stroke-width:2.2;stroke-linejoin:round}
+.orbit .rot{transform-origin:0 0;animation:spin 60s linear infinite}
+.orbit .rot.rev{animation-duration:90s;animation-direction:reverse}
+.orbit .tick{stroke:var(--faint);stroke-width:1}
+.orbit .wave{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0;transform-origin:0 0;animation:wave 4.5s ease-out infinite}
+.orbit .wave.w2{animation-delay:2.25s;stroke:var(--accent3)}
+.orbit .node{fill:var(--accent3);filter:drop-shadow(0 0 5px var(--accent3))}
+.orbit img{position:absolute;left:50%;top:50%;width:184px;height:184px;margin:-92px 0 0 -92px;border-radius:50%;object-fit:cover;
+  border:4px solid var(--surface);box-shadow:0 14px 40px rgba(163,18,42,.25)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes wave{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.28)}}
+.hero h1{font-family:var(--display);font-weight:800;font-size:56px;letter-spacing:-.01em;margin-top:6px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.roles{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin:10px 0 14px;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
+.roles i{font-style:normal;color:var(--accent3);letter-spacing:0}
+.affil{color:var(--muted);margin:0 auto 10px;max-width:640px}
+.typed{font-family:var(--serif);font-size:22px;margin:0 0 22px;min-height:1.5em}
+.typed b{color:var(--accent);font-weight:700;border-right:2px solid var(--accent);padding-right:3px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{border-color:transparent}}
+.links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:14.5px;font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.03);transition:transform .15s,border-color .15s}
+.btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-ink);color:#fff}
+@media (max-width:640px){
+  .orbit{width:240px;height:240px}
+  .orbit img{width:148px;height:148px;margin:-74px 0 0 -74px}
+  .hero h1{font-size:38px}.roles{font-size:12px;letter-spacing:.1em}.typed{font-size:19px}
+}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:38px 0 0;text-align:center}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 14px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad)}
+.stat b{display:block;font-family:var(--display);font-size:40px;line-height:1.05;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:4px 0 8px}
+.stat .sub{display:block;font-size:13px;color:var(--muted);line-height:1.5}
+.stat .sub em{font-style:normal;color:var(--accent3)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stat b{font-size:32px}}
+
+/* marquee */
+.marquee{margin-top:34px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee .track{display:flex;gap:10px;width:max-content;animation:marq 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee span{white-space:nowrap;font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.marquee span::before{content:"✦";color:var(--accent3);margin-right:8px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* sections */
+section.block{padding:62px 0;border-top:1px solid var(--line)}
+.sec-head{margin-bottom:28px}
+.sec-head h2{font-size:32px;font-weight:700;display:inline-block;position:relative;padding-bottom:8px}
+.sec-head h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:4px;border-radius:2px;background:var(--grad)}
+.sec-head p{margin:10px 0 0;color:var(--muted);font-size:15.5px;max-width:720px}
+.prose{max-width:780px;font-size:16.5px}
+.prose p{margin:0 0 14px}
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:34px}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+.news-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);align-self:start}
+.news-card h3{font-size:19px;margin-bottom:6px}
+.news{list-style:none;margin:0;padding:0}
+.news li{padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.news li:last-child{border-bottom:0}
+.news time{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+
+/* research in motion */
+.demo{display:grid;grid-template-columns:1.5fr 1fr;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.demo canvas{display:block;width:100%;height:100%;min-height:340px;cursor:crosshair;touch-action:none;background:var(--surface-2)}
+.demo .txt{padding:26px 26px 22px}
+.demo .txt h3{font-size:22px;margin:6px 0 10px}
+.demo .txt p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.legend{list-style:none;margin:14px 0 16px;padding:0;display:grid;gap:8px;font-size:14px}
+.legend li{display:flex;align-items:center;gap:10px}
+.legend i{flex:none;width:12px;height:12px;display:inline-block}
+.lg-h{border:2px solid var(--text);background:var(--surface)}
+.lg-t{border-radius:50%;background:var(--accent)}
+.lg-c{height:3px!important;width:18px!important;background:var(--accent);border-radius:2px}
+.hint{font-size:13px;color:var(--faint)}
+@media (max-width:760px){.demo{grid-template-columns:1fr}.demo canvas{height:270px;min-height:0}}
+
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+@media (max-width:960px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.tiles{grid-template-columns:1fr}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.04),0 18px 40px rgba(20,20,30,.12)}
+.tile canvas{display:block;width:100%;height:210px;background:var(--surface-2)}
+.tile .tb{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tile .tag{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3)}
+.tile h3{font-size:18px}
+.tile p{margin:0;color:var(--muted);font-size:14.5px;flex:1}
+.tile a.more{font-size:13.5px;font-weight:600;margin-top:4px}
+
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+@media (max-width:760px){.projects{grid-template-columns:1fr}}
+.proj{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:18px 20px}
+.proj .tag{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.proj h3{font-size:18px;margin:6px 0 8px}
+.proj p{margin:0;color:var(--muted);font-size:14.5px}
+.subhead{font-size:21px;margin:46px 0 4px}
+
+/* journey */
+.journey{position:relative;list-style:none;margin:0;padding:0}
+.journey .rail{position:absolute;left:23px;top:10px;bottom:10px;width:3px;border-radius:2px;background:var(--line)}
+.journey .rail i{position:absolute;left:0;top:0;width:100%;height:0;border-radius:2px;background:var(--grad);background:linear-gradient(180deg,var(--accent),var(--accent3))}
+.stop{position:relative;padding:0 0 30px 70px}
+.stop:last-child{padding-bottom:0}
+.flag{position:absolute;left:4px;top:2px;width:42px;height:42px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow);overflow:hidden}
+.flag svg{width:30px;height:20px;border-radius:3px}
+.stop .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+.stop .inst{font-family:var(--serif);font-size:21px;font-weight:700;margin:0}
+.stop .country{font-size:13px;font-weight:600;color:var(--faint);letter-spacing:.06em;text-transform:uppercase}
+.role{display:flex;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;padding:10px 0;border-bottom:1px dashed var(--line)}
+.role:last-of-type{border-bottom:0}
+.role b{font-weight:600}
+.role span{color:var(--muted);font-size:14px}
+.role .dur{color:var(--accent3);font-weight:600}
+.themes{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.themes li{font-size:13px;padding:4px 10px;border-radius:8px;background:var(--chip);color:var(--muted)}
+.themes li::before{content:"→ ";color:var(--accent)}
+@media (max-width:560px){.stop{padding-left:56px}.flag{width:36px;height:36px;left:2px}.flag svg{width:24px;height:16px}.journey .rail{left:19px}}
+
+/* publications */
+.pub-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:inherit;font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button:hover{color:var(--text)}
+.filters button[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.filters button .n{opacity:.6;margin-left:4px;font-variant-numeric:tabular-nums}
+.pub-right{display:flex;gap:8px;flex:1;justify-content:flex-end;min-width:260px}
+.pub-search,.pub-sort{font:inherit;font-size:14.5px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.pub-search{flex:1;max-width:300px;min-width:0}
+.pub-search:focus,.pub-sort:focus{outline:2px solid var(--accent);outline-offset:1px}
+.pubs{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.pub{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:64px 1fr;gap:16px;transition:border-color .15s}
+.pub:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.pub .yr{font-family:var(--display);font-weight:800;font-size:21px;color:var(--faint)}
+.pub .au{font-size:14px;color:var(--muted);margin:0 0 3px}
+.pub .au b{color:var(--text);font-weight:600}
+.pub .ttl{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.35;margin:0 0 4px}
+.pub .venue{font-size:14.5px;margin:0 0 10px;color:var(--muted)}
+.pub .venue i{color:var(--text)}
+.pub .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.chip.accent{background:var(--accent-soft);color:var(--accent-ink)}
+.chip.cite{background:transparent;border:1px solid color-mix(in srgb,var(--accent3) 50%,transparent);color:var(--accent3)}
+.pub a.doi{font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;margin-left:auto}
+.pub a.doi svg{width:13px;height:13px}
+.pub[hidden]{display:none}
+.empty{color:var(--muted);padding:18px 0}
+.note{font-size:13px;color:var(--faint);margin-top:14px}
+@media (max-width:560px){.pub{grid-template-columns:1fr;gap:4px;padding:16px}.pub .yr{font-size:15px}.pub-right{min-width:100%}.pub-search{max-width:none}.pub a.doi{margin-left:0}}
+
+/* journal "cover" tiles */
+.pub{grid-template-columns:84px 1fr}
+.cover{width:84px;height:112px;border-radius:6px 10px 10px 6px;background:linear-gradient(160deg,var(--c1),var(--c2));color:var(--ink,#fff);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:8px 8px 7px 12px;
+  box-shadow:0 1px 1px rgba(0,0,0,.08),0 8px 18px -6px rgba(0,0,0,.35);transition:transform .2s}
+.pub:hover .cover{transform:rotate(-2deg) translateY(-2px)}
+.cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:rgba(0,0,0,.22)}
+.cover::after{content:"";position:absolute;right:-18px;top:30px;width:70px;height:70px;border-radius:50%;border:10px solid rgba(255,255,255,.12)}
+.cover .cp{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.85;position:relative;z-index:1}
+.cover .ca{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.1;position:relative;z-index:1}
+.cover .cy{font-size:10px;font-weight:600;opacity:.85;position:relative;z-index:1}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3;border-radius:inherit;background:var(--surface)}
+.chip.q1{background:#e7f6ec;color:#1b7a3d}
+.chip.q2{background:#e8f0fd;color:#1f55b8}
+:root[data-theme="dark"] .chip.q1{background:#183626;color:#7fdc9e}
+:root[data-theme="dark"] .chip.q2{background:#1a2742;color:#8db6ff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip.q1{background:#183626;color:#7fdc9e}:root:not([data-theme="light"]) .chip.q2{background:#1a2742;color:#8db6ff}}
+.pub .when{font-size:13px;color:var(--faint);font-weight:600}
+@media (max-width:560px){.pub{grid-template-columns:64px 1fr;gap:12px}.cover{width:64px;height:86px;padding:6px 6px 6px 10px}.cover .ca{font-size:13px}.cover .cp{font-size:7px}}
+
+/* mentors */
+.mentors{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.mentor{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+.mentor .av{flex:none;width:54px;height:54px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:.02em}
+.mentor .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1b7a3d;background:#e7f6ec;border-radius:999px;padding:2px 8px;margin-bottom:4px}
+.mentor .mn{font-family:var(--serif);font-size:18px;font-weight:700;margin:0}
+.mentor .mr{margin:2px 0 4px;font-size:14px;font-weight:600;color:var(--accent)}
+.mentor .mi{margin:0;font-size:14px;color:var(--muted)}
+
+/* conferences */
+.confs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:820px){.confs{grid-template-columns:1fr}}
+.conf{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.conf::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad)}
+.conf .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.conf .acr{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.conf .fl{flex:none;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.conf .fl svg{width:24px;height:16px;border-radius:2px;box-shadow:0 0 0 1px var(--line)}
+.conf .cn{font-family:var(--serif);font-size:17px;font-weight:600;margin:0;line-height:1.35}
+.conf .where{font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
+.conf .where span{display:inline-flex;align-items:center;gap:5px}
+.conf .where svg{width:14px;height:14px;color:var(--accent)}
+.conf .paper{margin-top:4px;padding:12px 14px;border-radius:10px;background:var(--surface-2);font-size:14px}
+.conf .paper small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent3);margin-bottom:2px}
+.conf .paper a{font-weight:600}
+
+/* gallery */
+.gallery{columns:3 260px;column-gap:14px}
+.gitem{break-inside:avoid;margin:0 0 14px;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);cursor:zoom-in;position:relative;display:block;width:100%;padding:0;text-align:left;font:inherit;color:inherit}
+.gitem img{display:block;width:100%;height:auto;transition:transform .5s ease}
+.gitem:hover img{transform:scale(1.04)}
+.gitem .gcap{padding:10px 14px 12px}
+.gitem .gcap b{display:block;font-size:14.5px;font-weight:600;line-height:1.35}
+.gitem .gcap span{font-size:12.5px;color:var(--faint)}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,10,14,.92);display:flex;align-items:center;justify-content:center;padding:24px}
+.lightbox[hidden]{display:none}
+.lightbox figure{margin:0;max-width:min(1100px,92vw);text-align:center}
+.lightbox img{max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox figcaption{color:#eee;margin-top:12px;font-size:15px}
+.lb-btn{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:24px;cursor:pointer;display:grid;place-items:center}
+.lb-btn:hover{background:rgba(255,255,255,.25)}
+.lb-close{top:16px;right:16px;font-size:18px}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}
+.lb-next{right:16px;top:50%;transform:translateY(-50%)}
+
+/* awards & skills */
+.awards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:960px){.awards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.awards{grid-template-columns:1fr}}
+.awards li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.awards .medal{width:44px;height:44px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;margin-bottom:12px}
+.awards .medal svg{width:22px;height:22px}
+.awards b{display:block;font-family:var(--serif);font-size:17px;line-height:1.3;margin-bottom:4px}
+.awards span{color:var(--muted);font-size:14px}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.skills h3{font-family:var(--sans);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:14px;padding:5px 11px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+.ccard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.ccard .row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.ccard .row:last-child{border-bottom:0}
+.ccard .row svg{width:18px;height:18px;color:var(--accent);flex:none;margin-top:3px}
+.ccard .row small{display:block;color:var(--faint);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.ccard .links{justify-content:flex-start}
+
+footer{padding:34px 0 46px;border-top:1px solid var(--line);color:var(--faint);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
+  .marquee .track,.orbit .rot,.orbit .wave,.typed b{animation:none}
+}
+@media (max-width:520px){.wrap{padding:0 16px}section.block{padding:48px 0}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Kishan Dwivedi</a>
+    <nav aria-label="Main">
+      <ul id="navList">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#mentors">Mentors</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#conferences">Conferences</a></li>
+        <li id="galleryNav" hidden><a href="#gallery">Gallery</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navList">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <canvas class="hero-mesh" id="heroMesh" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="orbit">
+        <svg viewBox="-150 -150 300 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="coreGrad" x1="0" y1="-1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+              <stop offset="0" style="stop-color:var(--accent)"/><stop offset=".55" style="stop-color:var(--accent3)"/><stop offset="1" style="stop-color:var(--accent2)"/>
+            </linearGradient>
+          </defs>
+          <circle class="wave" r="140"/><circle class="wave w2" r="140"/>
+          <g class="rot rev" id="ticks"></g>
+          <g class="rot">
+            <circle class="face" r="140"/>
+            <circle class="face" r="104"/>
+            <path class="core" id="corePath"/>
+            <g id="coreNodes"></g>
+          </g>
+        </svg>
+        <img src="photo.jpg" alt="Portrait of Dr. Kishan Dwivedi" width="184" height="184">
+      </div>
+      <h1>Kishan Dwivedi</h1>
+      <div class="roles"><span>Researcher</span><i>✦</i><span>Computational Mechanics</span><i>✦</i><span>XFEM Developer</span><i>✦</i><span>Composites</span></div>
+      <p class="affil">Postdoctoral Researcher · School of Computing and Artificial Intelligence, Nazarbayev University, Astana, Kazakhstan</p>
+      <p class="typed">I model how composites <b id="typed">crack</b></p>
+      <div class="links">
+        <a class="btn primary" href="CV_Kishan_Dwivedi.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>Download CV</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=7P_I0AYAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.8 9.6V16c0 2 3 4 6.8 4s6.8-2 6.8-4v-3.4L12 16.3l-6.8-3.7z"/></svg>Google Scholar</a>
+        <a class="btn" href="https://www.researchgate.net/profile/Kishan-Dwivedi" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm9.6 13.6c-.6-.3-1.1-.9-1.7-1.8l-1-1.6c.9-.3 1.6-1 1.6-2.1 0-1.4-1.1-2.2-2.7-2.2-.7 0-1.6 0-2.3.1v7.6h1.3v-3.3h.8l1.3 2.1c.6.9 1.3 1.6 2.5 1.6l.2-.4zM8.1 12V9.1l.8-.1c.9 0 1.4.5 1.4 1.4 0 1-.6 1.6-1.5 1.6h-.7zm9.8-4.6c-1.6 0-2.3 1-2.3 2.6v1.4c0 1.7.7 2.5 2.1 2.5.7 0 1.300-.2 1.700-.5V11h-1.8v.9h.8v1.1c-.2.1-.4.2-.7.2-.8 0-1.1-.6-1.1-1.7v-1.5c0-1.1.4-1.7 1.2-1.700.5 0 .9.2 1.2.5l.5-.7c-.4-.4-.9-.7-1.6-.7z"/></svg>ResearchGate</a>
+        <a class="btn" href="https://www.linkedin.com/in/dr-kishan-dwivedi-3685a0258/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4V9.5z"/></svg>LinkedIn</a>
+        <a class="btn" href="mailto:kishan.dwivedi@nu.edu.kz">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b data-count="17">17</b><span class="lbl">Publications</span><span class="sub">7 journal articles <em>✦</em> 4 chapters<br>4 conference papers <em>✦</em> 2 in review</span></div>
+        <div class="stat"><b data-count="148" data-suffix="+">148+</b><span class="lbl">Citations</span><span class="sub">Google Scholar<br>October 2026</span></div>
+        <div class="stat"><b data-count="7">7</b><span class="lbl">h-index</span><span class="sub">i10-index = 5<br>2 papers in Eng. Fract. Mech.</span></div>
+        <div class="stat"><b data-count="8">8</b><span class="lbl">Conferences</span><span class="sub">India <em>✦</em> Singapore<br>Thailand</span></div>
+      </div>
+    </div>
+    <div class="marquee" aria-label="Research frontiers">
+      <div class="track">
+        <span>Higher-order XFEM</span><span>Fracture mechanics</span><span>Composite laminates</span><span>Sandwich structures</span><span>Oblique impact</span><span>Progressive damage</span><span>Fatigue crack growth</span><span>Cohesive zone</span><span>Free vibration</span><span>ANN surrogates</span><span>Abaqus VUMAT</span><span>Corrugated cores</span>
+        <span aria-hidden="true">Higher-order XFEM</span><span aria-hidden="true">Fracture mechanics</span><span aria-hidden="true">Composite laminates</span><span aria-hidden="true">Sandwich structures</span><span aria-hidden="true">Oblique impact</span><span aria-hidden="true">Progressive damage</span><span aria-hidden="true">Fatigue crack growth</span><span aria-hidden="true">Cohesive zone</span><span aria-hidden="true">Free vibration</span><span aria-hidden="true">ANN surrogates</span><span aria-hidden="true">Abaqus VUMAT</span><span aria-hidden="true">Corrugated cores</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>About</h2></div>
+      <div class="about-grid">
+        <div class="prose">
+          <p>I am a postdoctoral researcher at Nazarbayev University, working on the BRAVE project — buckling-resistant double- and multi-layered shells with complex topologies for aerospace and land vehicles. My current work looks at how CFRP sandwich panels with corrugated cores respond to oblique impact, and how tubular sandwich structures with power-law corrugated cores carry compression, torsion and bending.</p>
+          <p>I earned my PhD in Mechanical Design from <b>IIT Mandi</b>, where I developed a higher-order extended finite element method (HOXFEM) for fracture and vibration analysis of cracked orthotropic composites, and trained neural-network surrogates on its results. During the PhD I spent a year at the <b>University of Alberta</b>, Canada, as a SERB–UAlberta Overseas Visiting Doctoral Fellow, showing that XFEM fracture parameters for pipeline steel are not unique and proposing a way to pin them down.</p>
+          <p>Before that I worked as a Junior Research Fellow on a DRDO project on bonded composite patch repair of cracked aircraft panels, and ran low-cycle fatigue experiments on RAFM steel at IGCAR Kalpakkam during my M.Tech at NIT Srinagar. The common thread is simple: understanding how damaged structures behave, so they can be designed and repaired with confidence.</p>
+        </div>
+        <div class="news-card reveal">
+          <h3>Latest news</h3>
+          <ul class="news">
+            <li><time>Oct 2026</time>Working on tubular sandwich panels with power-law corrugated cores under compression, bending and twisting.</li>
+            <li><time>Sep 2026</time>Submitted the oblique-impact study of double-sinusoidal corrugated-core panels to the <i>International Journal of Damage Mechanics</i> (Q1).</li>
+            <li><time>Jun 2026</time>PhD degree awarded by IIT Mandi.</li>
+            <li><time>Feb 2026</time>Joined Nazarbayev University as a Postdoctoral Researcher.</li>
+            <li><time>Jan 2026</time>Defended my PhD thesis at IIT Mandi.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="sec-head"><h2>Research in motion</h2><p>Each animation below sketches one problem I have worked on. They are illustrations of the ideas, not simulation output.</p></div>
+
+      <div class="demo reveal">
+        <canvas id="demoMesh" aria-label="Interactive XFEM crack-growth illustration"></canvas>
+        <div class="txt">
+          <span class="eyebrow">Try it · PhD work</span>
+          <h3>How XFEM sees a crack</h3>
+          <p>In XFEM the crack does not have to follow the mesh. Nodes of elements the crack cuts get a jump (Heaviside) enrichment, and nodes around the tip get crack-tip functions that capture the singular stress field.</p>
+          <p>My higher-order XFEM adds more terms to the tip enrichment and uses variable-node elements, so stress intensity factors stay accurate on coarser meshes.</p>
+          <ul class="legend">
+            <li><i class="lg-c"></i>Crack path</li>
+            <li><i class="lg-h"></i>Heaviside-enriched node</li>
+            <li><i class="lg-t"></i>Crack-tip-enriched node</li>
+          </ul>
+          <span class="hint">Move your cursor (or finger) over the mesh to steer the crack · click to restart</span>
+        </div>
+      </div>
+
+      <div class="tiles">
+        <article class="tile reveal">
+          <canvas data-anim="vib" aria-label="Animated vibration mode of a cracked composite plate"></canvas>
+          <div class="tb"><span class="tag">Vibration · HOXFEM</span><h3>Cracked laminates that vibrate</h3>
+            <p>A crack lowers stiffness and changes mode shapes. I extended HOXFEM to free flexural vibration of cracked laminated, sandwich and porous FG plates.</p>
+            <a class="more" href="https://www.sciencedirect.com/science/article/abs/pii/S0013794423003788" target="_blank" rel="noopener">Related paper ↗</a></div>
+        </article>
+        <article class="tile reveal">
+          <canvas data-anim="impact" aria-label="Animated oblique impact on a corrugated-core sandwich panel"></canvas>
+          <div class="tb"><span class="tag">Impact · Abaqus/Explicit</span><h3>Oblique impact on corrugated cores</h3>
+            <p>An impactor strikes a CFRP sandwich panel at an angle. I track contact force, dent depth, and delamination, and compare double-sinusoidal corrugated cores with honeycomb.</p>
+            <span class="more" style="color:var(--faint)">Under review, Int. J. Damage Mechanics (Q1)</span></div>
+        </article>
+        <article class="tile reveal">
+          <canvas data-anim="tube" aria-label="Animated tubular sandwich structure under torsion"></canvas>
+          <div class="tb"><span class="tag">Torsion · BRAVE project</span><h3>Tubular sandwich under twist</h3>
+            <p>Tubes with power-law corrugated cores under axial compression, torsion and bending. The core profile changes how load spreads between the face sheets.</p>
+            <span class="more" style="color:var(--faint)">In preparation, 2026</span></div>
+        </article>
+        <article class="tile reveal">
+          <canvas data-anim="fatigue" aria-label="Animated fatigue crack growth and crack-length curve"></canvas>
+          <div class="tb"><span class="tag">Fatigue · Paris law</span><h3>Fatigue crack growth</h3>
+            <p>Under cyclic load a crack grows slowly, then speeds up. I modelled this in CNT-reinforced polymers, FRP laminates and patch-repaired aircraft panels.</p>
+            <a class="more" href="https://www.worldscientific.com/doi/abs/10.1142/S242491302241003X" target="_blank" rel="noopener">Related paper ↗</a></div>
+        </article>
+        <article class="tile reveal">
+          <canvas data-anim="ann" aria-label="Animated neural network surrogate model"></canvas>
+          <div class="tb"><span class="tag">Machine learning</span><h3>ANN surrogates trained on XFEM</h3>
+            <p>Once trained on XFEM results, a small neural network returns natural frequencies or fatigue life almost instantly, so designers can explore many crack cases quickly.</p>
+            <a class="more" href="https://doi.org/10.1080/15397734.2025.2454351" target="_blank" rel="noopener">Related paper ↗</a></div>
+        </article>
+        <article class="tile reveal">
+          <canvas data-anim="params" aria-label="Animated load–CMOD curves for different XFEM parameter sets"></canvas>
+          <div class="tb"><span class="tag">Pipeline steel · UAlberta</span><h3>Same curve, different cracks</h3>
+            <p>Different XFEM parameter sets can give the same load–CMOD curve but very different crack growth. A maximum-longitudinal-strain criterion picks out the unique set.</p>
+            <a class="more" href="https://doi.org/10.1016/j.engfracmech.2025.111351" target="_blank" rel="noopener">Related paper ↗</a></div>
+        </article>
+      </div>
+
+      <h3 class="subhead">Projects</h3>
+      <div class="projects">
+        <div class="proj reveal"><span class="tag">2026 – present · Nazarbayev University</span>
+          <h3>BRAVE — Buckling-resistant multi-layered shells</h3>
+          <p>Oblique impact of double-sinusoidal corrugated-core CFRP sandwich panels versus honeycomb cores; tubular sandwich structures with power-law corrugated cores.</p></div>
+        <div class="proj reveal"><span class="tag">2024 – 2025 · University of Alberta</span>
+          <h3>Unique XFEM fracture parameters for pipeline steel</h3>
+          <p>Tensile, CT and SENB specimens; cohesive damage area, crack length and longitudinal strain; a criterion to track the crack tip during evolution.</p></div>
+        <div class="proj reveal"><span class="tag">2020 – 2026 · IIT Mandi · PhD</span>
+          <h3>Fracture and vibration of orthotropic composites using HOXFEM</h3>
+          <p>Crack-tip enrichments and variable-node elements for SIFs, extended to cracked laminates and sandwich plates, with ANN surrogates.</p></div>
+        <div class="proj reveal"><span class="tag">2019 – 2020 · DRDO project, IIT Mandi</span>
+          <h3>Bonded composite patch repair of aircraft panels</h3>
+          <p>XFEM code for SIF and fatigue life of patch-repaired aluminium panels; scarf patch shape and size optimised under thermo-mechanical load.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="journey">
+    <div class="wrap">
+      <div class="sec-head"><h2>Scientific journey</h2><p>From mechanical engineering in Kanpur to composite structures in Astana.</p></div>
+      <div class="journey" id="journeyList">
+        <div class="rail"><i id="railFill"></i></div>
+
+        <div class="stop reveal">
+          <span class="flag" title="Kazakhstan"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#00AFCA"/><circle cx="15.5" cy="8.6" r="3.4" fill="#FEC50C"/><path d="M9.5 13.4q6 2.6 12 0" stroke="#FEC50C" stroke-width="1.1" fill="none"/><rect x="2.2" y="2" width="1.4" height="16" fill="#FEC50C"/></svg></span>
+          <div class="card">
+            <span class="country">Kazakhstan</span>
+            <p class="inst">Nazarbayev University, Astana</p>
+            <div class="role"><b>Postdoctoral Researcher</b><span>Feb 2026 – Present · <span class="dur">BRAVE project</span></span></div>
+            <div class="role"><span>Supervisors: Prof. Andrey Melnikov &amp; Prof. Christos Spitas</span></div>
+            <ul class="themes"><li>Oblique impact of corrugated-core CFRP sandwich panels</li><li>Tubular sandwich with power-law cores</li><li>VUMAT progressive damage</li></ul>
+          </div>
+        </div>
+
+        <div class="stop reveal">
+          <span class="flag" title="Canada"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#D52B1E"/><rect x="22.5" width="7.5" height="20" fill="#D52B1E"/><path d="M15 4.2l1.1 2.3 1.9-.7-.7 3.2 1.8-1-.4 1.7 1.5.4-2.7 2.1.4 1.1-2.8-.5V15.6h-.4v-2.8l-2.8.5.4-1.1-2.7-2.1 1.5-.4-.4-1.7 1.8 1-.7-3.2 1.9.7z" fill="#D52B1E"/></svg></span>
+          <div class="card">
+            <span class="country">Canada</span>
+            <p class="inst">University of Alberta, Edmonton</p>
+            <div class="role"><b>Visiting Doctoral Researcher</b><span>Sep 2024 – Aug 2025 · <span class="dur">1 year</span></span></div>
+            <ul class="themes"><li>Non-unique XFEM fracture parameters</li><li>Pipeline steel: tensile, CT, SENB</li><li>SERB–UAlberta Overseas Fellowship</li></ul>
+          </div>
+        </div>
+
+        <div class="stop reveal">
+          <span class="flag" title="India"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#FF9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.5" fill="none" stroke="#000080" stroke-width=".8"/></svg></span>
+          <div class="card">
+            <span class="country">India</span>
+            <p class="inst">Indian Institute of Technology Mandi</p>
+            <div class="role"><b>PhD, Mechanical Design</b><span>Sep 2020 – Jan 2026 · <span class="dur">CGPA 8.46</span></span></div>
+            <div class="role"><b>Junior Research Fellow, DRDO project</b><span>Nov 2019 – Sep 2020</span></div>
+            <ul class="themes"><li>Higher-order XFEM for orthotropic fracture</li><li>Vibration of cracked laminates &amp; sandwich plates</li><li>Composite patch repair of aircraft panels</li><li>ANN surrogates</li></ul>
+          </div>
+        </div>
+
+        <div class="stop reveal">
+          <span class="flag" title="India"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#FF9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.5" fill="none" stroke="#000080" stroke-width=".8"/></svg></span>
+          <div class="card">
+            <span class="country">India</span>
+            <p class="inst">NIT Srinagar &amp; IGCAR Kalpakkam</p>
+            <div class="role"><b>M.Tech, Mechanical System Design</b><span>2017 – 2019 · <span class="dur">CGPA 8.42 · GATE Fellow</span></span></div>
+            <div class="role"><b>M.Tech project, IGCAR Kalpakkam</b><span>Dec 2018 – Jun 2019</span></div>
+            <ul class="themes"><li>Low-cycle fatigue of 5000 h aged RAFM steel at 823 K</li><li>EBSD &amp; XRD substructure analysis</li></ul>
+          </div>
+        </div>
+
+        <div class="stop reveal">
+          <span class="flag" title="India"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#FF9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.5" fill="none" stroke="#000080" stroke-width=".8"/></svg></span>
+          <div class="card">
+            <span class="country">India</span>
+            <p class="inst">KIT Kanpur</p>
+            <div class="role"><b>B.Tech, Mechanical Engineering</b><span>2011 – 2015 · <span class="dur">71.74%</span></span></div>
+            <ul class="themes"><li>Qualified GATE 2017</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="mentors">
+    <div class="wrap">
+      <div class="sec-head"><h2>Supervisors &amp; mentors</h2><p>The people who have guided my research, from M.Tech to postdoc.</p></div>
+      <div class="mentors">
+        <div class="mentor reveal">
+          <span class="av">AM</span>
+          <div><span class="badge">Current</span>
+            <p class="mn">Prof. Andrey Melnikov</p>
+            <p class="mr">Postdoctoral supervisor · PI, BRAVE project</p>
+            <p class="mi">School of Computing and Artificial Intelligence, Nazarbayev University, Kazakhstan</p></div>
+        </div>
+        <div class="mentor reveal">
+          <span class="av">CS</span>
+          <div><span class="badge">Current</span>
+            <p class="mn">Prof. Christos Spitas</p>
+            <p class="mr">Postdoctoral supervisor · BRAVE project</p>
+            <p class="mi">Nazarbayev University, Astana, Kazakhstan</p></div>
+        </div>
+        <div class="mentor reveal">
+          <span class="av">SA</span>
+          <div><p class="mn">Prof. Samer Adeeb</p>
+            <p class="mr">Host supervisor · Visiting doctoral research (2024–25)</p>
+            <p class="mi">Civil and Environmental Engineering, University of Alberta, Canada</p></div>
+        </div>
+        <div class="mentor reveal">
+          <span class="av">HP</span>
+          <div><p class="mn">Prof. Himanshu Pathak</p>
+            <p class="mr">PhD supervisor · PI, DRDO JRF project</p>
+            <p class="mi">School of Mechanical and Materials Engineering, IIT Mandi, India</p></div>
+        </div>
+        <div class="mentor reveal">
+          <span class="av">GH</span>
+          <div><p class="mn">Prof. Ghulam Ashraf Ul Harmain</p>
+            <p class="mr">M.Tech supervisor</p>
+            <p class="mi">Department of Mechanical Engineering, NIT Srinagar, India</p></div>
+        </div>
+        <div class="mentor reveal">
+          <span class="av">VS</span>
+          <div><p class="mn">Dr. Vani Shankar</p>
+            <p class="mr">M.Tech project mentor · low-cycle fatigue of RAFM steel</p>
+            <p class="mi">Indira Gandhi Centre for Atomic Research (IGCAR), Kalpakkam, India</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="publications">
+    <div class="wrap">
+      <div class="sec-head"><h2>Publications</h2><p>Citation counts from <a href="https://scholar.google.com/citations?user=7P_I0AYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>, October 2026.</p></div>
+      <div class="pub-tools">
+        <div class="filters" role="group" aria-label="Filter publications">
+          <button type="button" data-f="all" aria-pressed="true">All<span class="n"></span></button>
+          <button type="button" data-f="journal" aria-pressed="false">Journal<span class="n"></span></button>
+          <button type="button" data-f="chapter" aria-pressed="false">Book chapters<span class="n"></span></button>
+          <button type="button" data-f="conference" aria-pressed="false">Conference<span class="n"></span></button>
+          <button type="button" data-f="review" aria-pressed="false">In review<span class="n"></span></button>
+        </div>
+        <div class="pub-right">
+          <input class="pub-search" id="pubSearch" type="search" placeholder="Search title, journal, co-author…" aria-label="Search publications">
+          <select class="pub-sort" id="pubSort" aria-label="Sort publications"><option value="year">Newest</option><option value="cite">Most cited</option></select>
+        </div>
+      </div>
+      <ol class="pubs" id="pubList"></ol>
+      <p class="empty" id="pubEmpty" hidden>No publications match that search.</p>
+      <p class="note">Quartiles and SJR are SCImago/Scopus values for the latest available year and change annually. Citation counts from Google Scholar, October 2026.</p>
+    </div>
+  </section>
+
+  <section class="block" id="conferences">
+    <div class="wrap">
+      <div class="sec-head"><h2>Conferences</h2><p>International and national conferences where I have presented my work, with the papers that came out of them.</p></div>
+      <div class="confs" id="confList"></div>
+    </div>
+  </section>
+
+  <section class="block" id="gallery" hidden>
+    <div class="wrap">
+      <div class="sec-head"><h2>Gallery</h2><p>Conferences, talks, labs and moments along the way.</p></div>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
+    <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo">›</button>
+  </div>
+
+  <section class="block" id="awards">
+    <div class="wrap">
+      <div class="sec-head"><h2>Awards &amp; fellowships</h2></div>
+      <ul class="awards">
+        <li class="reveal"><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>
+          <b>SERB–University of Alberta Overseas Visiting Doctoral Fellowship</b><span>2024 · one year of collaborative research in Canada</span></li>
+        <li class="reveal"><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>
+          <b>MHRD PhD Fellowship, Government of India</b><span>2020 – 2025 · IIT Mandi</span></li>
+        <li class="reveal"><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>
+          <b>GATE Fellowship, MHRD, Government of India</b><span>2017 – 2019 · M.Tech at NIT Srinagar</span></li>
+        <li class="reveal"><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span>
+          <b>GATE 2017 qualified, Mechanical Engineering</b><span>National-level exam for postgraduate admission in India</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="sec-head"><h2>Skills</h2></div>
+      <div class="skills">
+        <div class="reveal"><h3>FE &amp; numerical modelling</h3><div class="tags"><span>Abaqus/CAE</span><span>Abaqus/Explicit</span><span>ANSYS APDL</span><span>DIGIMAT</span></div></div>
+        <div class="reveal"><h3>Subroutines</h3><div class="tags"><span>Abaqus VUMAT</span><span>Strain-rate-dependent damage</span></div></div>
+        <div class="reveal"><h3>Methods</h3><div class="tags"><span>FEM</span><span>XFEM</span><span>Higher-order XFEM</span><span>Cohesive zone</span><span>Progressive damage</span><span>ANN surrogates</span></div></div>
+        <div class="reveal"><h3>Structural analysis</h3><div class="tags"><span>Impact</span><span>Fracture</span><span>Fatigue</span><span>Free vibration</span><span>Modal analysis</span></div></div>
+        <div class="reveal"><h3>Programming &amp; data</h3><div class="tags"><span>MATLAB</span><span>OriginPro</span><span>Excel</span></div></div>
+        <div class="reveal"><h3>Experimental &amp; CAD</h3><div class="tags"><span>VIC-3D (DIC)</span><span>EBSD</span><span>XRD</span><span>LCF testing</span><span>SolidWorks</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="sec-head"><h2>Contact</h2></div>
+      <div class="contact">
+        <div class="ccard">
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <div><small>Email · Nazarbayev University</small><a href="mailto:kishan.dwivedi@nu.edu.kz">kishan.dwivedi@nu.edu.kz</a></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <div><small>Email · Personal</small><a href="mailto:kishaniitmandid20017@gmail.com">kishaniitmandid20017@gmail.com</a></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <div><small>Address</small>School of Computing and Artificial Intelligence (SCAI)<br>Nazarbayev University, Kabanbay Batyr 53<br>Astana 010000, Kazakhstan</div></div>
+        </div>
+        <div class="ccard">
+          <p style="margin:0 0 14px">Open to collaborations on computational mechanics of composites, fracture and impact modelling, and to research positions in FEM and composite structures.</p>
+          <div class="links">
+            <a class="btn primary" href="mailto:kishan.dwivedi@nu.edu.kz">Get in touch</a>
+            <a class="btn" href="CV_Kishan_Dwivedi.pdf" target="_blank" rel="noopener">View CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kishan Dwivedi</span>
+    <span>Last updated: October 2026</span>
+  </div>
+</footer>
+
+<script src="gallery/photos.js"></script>
+<script>
+document.documentElement.classList.add("js");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- publications ---------- */
+const ME = "Kishan Dwivedi";
+const pubs = [
+  {t:"journal", y:2025, c:3, title:"XFEM fracture parameters are not unique for consistent global behavior in tensile, CT, and SENB specimen",
+   au:"Kishan Dwivedi, Saher Attia, Himanshu Pathak, Samer Adeeb", v:"Engineering Fracture Mechanics", d:"325, 111351", url:"https://doi.org/10.1016/j.engfracmech.2025.111351", first:true},
+  {t:"journal", y:2025, c:7, title:"Accelerating composite sandwich plate analysis: A hybrid higher-order XFEM and ANN approach for natural frequency prediction",
+   au:"Siddharth Suman, Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Mechanics Based Design of Structures and Machines", d:"53, 4711–4723", url:"https://doi.org/10.1080/15397734.2025.2454351"},
+  {t:"journal", y:2023, c:33, title:"Free flexural vibration of cracked composite laminated plate using higher-order XFEM",
+   au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak, Mohammad Talha, Rajat Upadhaya", v:"Engineering Fracture Mechanics", d:"289, 109420", url:"https://www.sciencedirect.com/science/article/abs/pii/S0013794423003788", first:true},
+  {t:"journal", y:2023, c:10, title:"Variable node higher-order XFEM for fracture modelling in orthotropic material",
+   au:"Kishan Dwivedi, Himanshu Pathak, Sachin Kumar", v:"Proceedings of the IMechE, Part C: Journal of Mechanical Engineering Science", d:"1–25", url:"https://journals.sagepub.com/doi/10.1177/09544062221148879", first:true},
+  {t:"journal", y:2023, c:21, title:"Free vibration of porous functionally graded plate with crack using stochastic XFEM approach",
+   au:"Ahmed Raza, Kishan Dwivedi, Himanshu Pathak, Mohammad Talha", v:"Journal of Vibration Engineering & Technologies", d:"", url:"https://link.springer.com/article/10.1007/s42417-023-01223-w"},
+  {t:"journal", y:2022, c:32, title:"XFEM-ANN approach to predict the fatigue performance of a composite patch repaired aluminium panel",
+   au:"Siddharth Suman, Kishan Dwivedi, Samanvay Anand, Himanshu Pathak", v:"Composites Part C: Open Access", d:"9, 100326", url:"https://www.sciencedirect.com/science/article/pii/S2666682022000895", oa:true},
+  {t:"journal", y:2022, c:22, title:"Fatigue crack growth in CNT reinforced polymer composite",
+   au:"Kishan Dwivedi, Gaurav Arora, Himanshu Pathak", v:"Journal of Micromechanics and Molecular Physics", d:"7, 173–184", url:"https://www.worldscientific.com/doi/abs/10.1142/S242491302241003X", first:true},
+
+  {t:"review", y:2026, c:0, title:"Oblique impact performance of corrugated-double-sinusoidal-core composite sandwich panels",
+   au:"Kishan Dwivedi et al.", v:"International Journal of Damage Mechanics", d:"under review, submitted Sep 2026", first:true},
+  {t:"review", y:2026, c:0, title:"Mechanical response of tubular sandwich structures with power-law corrugated cores under axial compression, torsion and bending",
+   au:"Kishan Dwivedi et al.", v:"In preparation", d:"expected Dec 2026", first:true},
+
+  {t:"conference", y:2025, c:1, title:"Higher order XFEM approach for free vibration analysis of cracked composite plates",
+   au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Proceedings of the ASME International Mechanical Engineering Congress and Exposition – India (IMECE-India 2025), Hyderabad, Vol. 5", d:"V005T10A046", url:"https://asmedigitalcollection.asme.org/imece-india/proceedings-abstract/IMECE-INDIA2025/1228978", first:true},
+  {t:"conference", y:2025, c:0, title:"Natural frequency behavior of composite laminated plates with an extended finite element approach",
+   au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Recent Advances in Composite Materials and Structures, Vol. 1 (CDPMHM 2024, IIT Mandi), Springer Proceedings in Materials 72", d:"pp. 169–177", url:"https://doi.org/10.1007/978-981-96-5281-5_15", first:true},
+  {t:"conference", y:2021, c:0, title:"Study on cyclic softening nature of reduced activation ferritic martensitic steel through EBSD and X-ray line profile analysis",
+   au:"Kishan Dwivedi, Vani Shankar, Ajoy Kumar Pandey, K. Mariappan, Nayaka Narasaiah, Shaju K. Albert, Ghulam Ashraf Ul Harmain", v:"8th International Conference on Creep, Fatigue & Creep-Fatigue Interaction (CF-8), IGCAR Kalpakkam", d:"", url:"https://www.researchgate.net/publication/360621414", first:true},
+  {t:"conference", y:2020, c:7, title:"Patch shape and size effect on performance of in-situ scarf patch repair in aircraft panel",
+   au:"Kishan Dwivedi, Himanshu Pathak", v:"IOP Conference Series: Materials Science and Engineering (ICRADM 2020, SVNIT Surat)", d:"1004, 012002", url:"https://iopscience.iop.org/article/10.1088/1757-899X/1004/1/012002/meta", first:true},
+
+  {t:"chapter", y:2024, c:2, title:"Fatigue crack growth in fiber-reinforced polymer composite laminate using higher-order XFEM",
+   au:"Kishan Dwivedi, Himanshu Pathak", v:"Recent Advances in Mechanics of Functional Materials and Structures (ACMFMS 2022, IIT Guwahati), Springer LNME", d:"pp. 1–11", url:"https://link.springer.com/chapter/10.1007/978-981-99-5919-8_1", first:true},
+  {t:"chapter", y:2024, c:4, title:"An extended finite element framework for free vibration analysis of laminated composite plates",
+   au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Advances in Applied Mechanics (INCAM 2022, NIT Jamshedpur), Springer", d:"", url:"https://link.springer.com/chapter/10.1007/978-981-97-0472-9_5", first:true},
+  {t:"chapter", y:2024, c:1, title:"Higher order enrichment functions for fracture simulation in isotropic and orthotropic material medium",
+   au:"Kishan Dwivedi, Himanshu Pathak", v:"Enriched Numerical Techniques, Elsevier", d:"", url:"https://www.sciencedirect.com/science/article/abs/pii/B9780443153624000206", first:true},
+  {t:"chapter", y:2024, c:0, title:"Material modeling and simulation approach for polymer composite",
+   au:"Abhishek Kumar, Kishan Dwivedi, Himanshu Pathak, Sunny Zafar", v:"Lightweight Composites: Mechanics, Processing, Properties, and Applications, Elsevier", d:"", url:"https://doi.org/10.1016/B978-0-443-18852-7.00002-6"}
+];
+const LABEL = {journal:"Journal", chapter:"Book chapter", conference:"Conference", review:"In review"};
+// stylised cover tile per venue; q/sjr = SCImago/Scopus quartile and SJR where confirmed
+const COVERS = [
+  // img = the publisher's own cover (local copy, or the publisher's CDN); the coloured tile shows if it fails to load
+  [/^Engineering Fracture/,          {a:"EFM", p:"Elsevier", c1:"#f2861e", c2:"#a8480a", q:"Q1", sjr:"1.26", img:"covers/efm.jpg"}],
+  [/^Mechanics Based Design/,        {a:"MBDSM", p:"Taylor & Francis", c1:"#335a8e", c2:"#14284a", q:"Q2", sjr:"0.59", img:"https://www.tandfonline.com/cms/asset/85a4879c-849f-4a26-a9c0-9e6289c8b16d/lmbd20.v054.i01.cover.jpg"}],
+  [/^Proceedings of the IMechE/,     {a:"IMechE C", p:"SAGE", c1:"#2b7bb0", c2:"#123f60", q:"Q2", sjr:"0.44", img:"covers/imeche-c.jpg"}],
+  [/^Journal of Vibration/,          {a:"JVET", p:"Springer", c1:"#3f7896", c2:"#183747", q:"Q2", sjr:"0.55", img:"https://media.springernature.com/w180/springer-static/cover/journal/42417.jpg"}],
+  [/^Composites Part C/,             {a:"Comp. C", p:"Elsevier", c1:"#2f9a78", c2:"#135741", q:"Q1", sjr:"1.15", img:"covers/compc.jpg"}],
+  [/^Journal of Micromechanics/,     {a:"JMMP", p:"World Sci.", c1:"#a3284f", c2:"#4f0f24", img:"covers/jmmp.jpg"}],
+  [/^International Journal of Damage/, {a:"IJDM", p:"SAGE", c1:"#c8467a", c2:"#7a1f45", q:"Q1", img:"covers/ijdm.jpg"}],
+  [/^IOP/,                           {a:"IOP MSE", p:"IOP", c1:"#5ba3dc", c2:"#1d5994"}],
+  [/ASME/,                           {a:"ASME IMECE", p:"ASME", c1:"#1f4e8c", c2:"#0b2447"}],
+  [/Creep/,                          {a:"CF-8", p:"IGCAR", c1:"#737b89", c2:"#353a43"}],
+  [/Springer Proceedings in Materials/, {a:"SPM", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"https://media.springernature.com/w180/springer-static/cover/book/978-981-96-5281-5.jpg"}],
+  [/LNME/,                           {a:"LNME", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"https://media.springernature.com/w180/springer-static/cover/book/978-981-99-5919-8.jpg"}],
+  [/Springer/,                       {a:"INCAM", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"https://media.springernature.com/w180/springer-static/cover/book/978-981-97-0472-9.jpg"}],
+  [/Enriched Numerical/,             {a:"Book", p:"Elsevier", c1:"#f2861e", c2:"#a8480a", img:"covers/enriched-numerical.jpg"}],
+  [/Lightweight Composites/,         {a:"Book", p:"Elsevier", c1:"#f2861e", c2:"#a8480a", img:"covers/lightweight-composites.jpg"}],
+  [/./,                              {a:"Draft", p:"In progress", c1:"#a3122a", c2:"#d9822b"}]
+];
+const coverFor = p => COVERS.find(([re]) => re.test(p.v))[1];
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+const list = document.getElementById("pubList"), search = document.getElementById("pubSearch"), sortSel = document.getElementById("pubSort");
+let curF = "all";
+function renderPubs(){
+  const by = sortSel.value;
+  const rv = p => p.t==="review" ? 1 : 0;
+  const arr = pubs.slice().sort((a,b) => rv(a)-rv(b) || (by==="cite" ? (b.c-a.c) || (b.y-a.y) : (b.y-a.y) || (b.c-a.c)));
+  list.innerHTML = arr.map(p => { const cv = coverFor(p); return `
+    <li class="pub" data-t="${p.t}">
+      <div class="cover" style="--c1:${cv.c1};--c2:${cv.c2};${cv.ink?`--ink:${cv.ink}`:""}" aria-hidden="true">
+        <span class="cp">${cv.p}</span><span class="ca">${cv.a}</span><span class="cy">${p.y}</span>
+        ${cv.img ? `<img src="${cv.img}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ""}
+      </div>
+      <div>
+        <p class="au">${esc(p.au).replace(ME, "<b>"+ME+"</b>")}</p>
+        <p class="ttl">${esc(p.title)}</p>
+        <p class="venue"><i>${esc(p.v)}</i>${p.d ? ", " + esc(p.d) : ""} <span class="when">· ${p.y}</span></p>
+        <div class="meta">
+          <span class="chip ${p.t==="review"?"accent":""}">${LABEL[p.t]}</span>
+          ${cv.q ? `<span class="chip ${cv.q.toLowerCase()}">${cv.q}${cv.sjr ? " · SJR " + cv.sjr : ""}</span>` : ""}
+          ${p.first ? '<span class="chip accent">First author</span>' : ""}
+          ${p.c ? `<span class="chip cite">✦ ${p.c} citation${p.c>1?"s":""}</span>` : ""}
+          ${p.oa ? '<span class="chip">Open access</span>' : ""}
+          ${p.url ? `<a class="doi" href="${p.url}" target="_blank" rel="noopener">Explore paper ${ext}</a>` : ""}
+        </div>
+      </div>
+    </li>`; }).join("");
+  applyPubFilter();
+}
+function applyPubFilter(){
+  const q = search.value.trim().toLowerCase();
+  let shown = 0;
+  list.querySelectorAll(".pub").forEach(li => {
+    const ok = (curF==="all" || li.dataset.t===curF) && (!q || li.textContent.toLowerCase().includes(q));
+    li.hidden = !ok; if (ok) shown++;
+  });
+  document.getElementById("pubEmpty").hidden = shown > 0;
+}
+const btns = document.querySelectorAll(".filters button");
+btns.forEach(b => {
+  const f = b.dataset.f;
+  b.querySelector(".n").textContent = f==="all" ? pubs.length : pubs.filter(p=>p.t===f).length;
+  b.addEventListener("click", () => { btns.forEach(x => x.setAttribute("aria-pressed", x===b)); curF = f; applyPubFilter(); });
+});
+search.addEventListener("input", applyPubFilter);
+sortSel.addEventListener("change", renderPubs);
+renderPubs();
+
+/* ---------- conferences ---------- */
+const FLAGS = {
+  IN:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#FF9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.5" fill="none" stroke="#000080" stroke-width=".8"/></svg>',
+  SG:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" fill="#EF3340"/><circle cx="7.5" cy="5" r="3.2" fill="#fff"/><circle cx="8.8" cy="5" r="3" fill="#EF3340"/><g fill="#fff"><circle cx="11" cy="3" r=".6"/><circle cx="12.6" cy="4.2" r=".6"/><circle cx="12" cy="6.2" r=".6"/><circle cx="10" cy="6.2" r=".6"/><circle cx="9.5" cy="4.2" r=".6"/></g></svg>',
+  TH:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#A51931"/><rect y="3.33" width="30" height="13.34" fill="#F4F5F8"/><rect y="6.67" width="30" height="6.66" fill="#2D2A4A"/></svg>'
+};
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+const CAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>';
+const confs = [
+  {acr:"EFPM 2026", name:"International Conference on Eco-Friendly Fibers and Polymeric Materials", host:"KMUTNB Techno Park, King Mongkut’s University of Technology North Bangkok", city:"Bangkok, Thailand", f:"TH", when:"2026", role:"Presented"},
+  {acr:"IMECE-India 2025", name:"ASME International Mechanical Engineering Congress and Exposition – India (first IMECE held in India)", host:"Hyderabad International Convention Centre (HICC)", city:"Hyderabad, India", f:"IN", when:"10–13 September 2025", role:"Presented",
+   paper:"Higher order XFEM approach for free vibration analysis of cracked composite plates", pub:"ASME Proceedings, IMECE-India 2025, Vol. 5, V005T10A046", url:"https://asmedigitalcollection.asme.org/imece-india/proceedings-abstract/IMECE-INDIA2025/1228978"},
+  {acr:"CDPMHM 2024", name:"International Conference on Composites: Design, Processing, Manufacturing and Health Monitoring", host:"IIT Mandi", city:"Himachal Pradesh, India", f:"IN", when:"June 2024", role:"Presented",
+   paper:"Natural frequency behavior of composite laminated plates with an extended finite element approach", pub:"Springer Proceedings in Materials, vol. 72 (2025)", url:"https://doi.org/10.1007/978-981-96-5281-5_15"},
+  {acr:"Materials Today 2023", name:"Materials Today Conference 2023 (inaugural edition, Elsevier)", host:"Singapore Expo", city:"Singapore", f:"SG", when:"2–5 August 2023", role:"Presented"},
+  {acr:"ACMFMS 2022", name:"8th Asian Conference on Mechanics of Functional Materials and Structures", host:"IIT Guwahati", city:"Assam, India", f:"IN", when:"11–14 December 2022", role:"Paper",
+   paper:"Fatigue crack growth in fiber-reinforced polymer composite laminate using higher-order XFEM", pub:"Springer Lecture Notes in Mechanical Engineering (2024)", url:"https://link.springer.com/chapter/10.1007/978-981-99-5919-8_1"},
+  {acr:"INCAM 2022", name:"5th Indian Conference on Applied Mechanics", host:"NIT Jamshedpur", city:"Jharkhand, India", f:"IN", when:"11–13 November 2022", role:"Presented",
+   paper:"An extended finite element framework for free vibration analysis of laminated composite plates", pub:"Advances in Applied Mechanics, Springer (2024)", url:"https://link.springer.com/chapter/10.1007/978-981-97-0472-9_5"},
+  {acr:"CF-8 2021", name:"8th International Conference on Creep, Fatigue and Creep-Fatigue Interaction", host:"Indira Gandhi Centre for Atomic Research (IGCAR)", city:"Kalpakkam, India · web conference", f:"IN", when:"August 2021", role:"Presented",
+   paper:"Study on cyclic softening nature of reduced activation ferritic martensitic steel through EBSD and X-ray line profile analysis", pub:"with Dr. Vani Shankar and IGCAR colleagues", url:"https://www.researchgate.net/publication/360621414"},
+  {acr:"ICRADM 2020", name:"1st International Conference on Recent Advancements in Design and Manufacturing", host:"SVNIT Surat", city:"Gujarat, India", f:"IN", when:"16–17 July 2020", role:"Presented",
+   paper:"Patch shape and size effect on performance of in-situ scarf patch repair in aircraft panel", pub:"IOP Conf. Series: Materials Science and Engineering 1004, 012002", url:"https://iopscience.iop.org/article/10.1088/1757-899X/1004/1/012002/meta"}
+];
+const CNAME = {IN:"India", SG:"Singapore", TH:"Thailand"};
+document.getElementById("confList").innerHTML = confs.map(c => `
+  <article class="conf reveal">
+    <div class="top"><span class="acr">${c.acr}</span><span class="fl">${FLAGS[c.f]}${CNAME[c.f]}</span></div>
+    <p class="cn">${esc(c.name)}</p>
+    <div class="where"><span>${PIN}${esc(c.host)}, ${esc(c.city)}</span><span>${CAL}${c.when}</span></div>
+    ${c.paper ? `<div class="paper"><small>Paper</small><a href="${c.url}" target="_blank" rel="noopener">${esc(c.paper)}</a><br><span style="color:var(--muted)">${esc(c.pub)}</span></div>` : ""}
+  </article>`).join("");
+
+/* ---------- gallery (photos listed in gallery/photos.js) ---------- */
+(() => {
+  const photos = (window.GALLERY || []).filter(p => p && p.src);
+  if (!photos.length) return;
+  document.getElementById("gallery").hidden = false;
+  document.getElementById("galleryNav").hidden = false;
+  const grid = document.getElementById("galleryGrid"), lb = document.getElementById("lightbox"),
+        lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+  const meta = p => [p.place, p.date].filter(Boolean).join(" · ");
+  grid.innerHTML = photos.map((p,i) => `
+    <button class="gitem reveal" data-i="${i}" type="button">
+      <img src="${p.src}" alt="${esc(p.caption||"")}" loading="lazy">
+      ${p.caption || meta(p) ? `<div class="gcap"><b>${esc(p.caption||"")}</b><span>${esc(meta(p))}</span></div>` : ""}
+    </button>`).join("");
+  let cur = 0;
+  const show = i => { cur = (i + photos.length) % photos.length; const p = photos[cur];
+    lbImg.src = p.src; lbImg.alt = p.caption || ""; lbCap.textContent = [p.caption, meta(p)].filter(Boolean).join(" — "); };
+  const open = i => { show(i); lb.hidden = false; document.body.style.overflow = "hidden"; document.getElementById("lbClose").focus(); };
+  const close = () => { lb.hidden = true; document.body.style.overflow = ""; };
+  grid.addEventListener("click", e => { const b = e.target.closest(".gitem"); if (b) open(+b.dataset.i); });
+  document.getElementById("lbClose").onclick = close;
+  document.getElementById("lbPrev").onclick = () => show(cur-1);
+  document.getElementById("lbNext").onclick = () => show(cur+1);
+  lb.addEventListener("click", e => { if (e.target === lb) close(); });
+  addEventListener("keydown", e => { if (lb.hidden) return;
+    if (e.key==="Escape") close(); else if (e.key==="ArrowLeft") show(cur-1); else if (e.key==="ArrowRight") show(cur+1); });
+})();
+
+/* ---------- hero ring: power-law corrugated core between two face sheets ---------- */
+(() => {
+  const Ri = 104, Ro = 140, n = 14, pw = 1.7, pts = [];
+  for (let k=0;k<=720;k++){ const a = 2*Math.PI*k/720, f = Math.pow(0.5+0.5*Math.sin(n*a), pw);
+    const r = Ri + 3 + (Ro-Ri-6)*f; pts.push((k?"L":"M") + (r*Math.cos(a)).toFixed(2) + "," + (r*Math.sin(a)).toFixed(2)); }
+  document.getElementById("corePath").setAttribute("d", pts.join("") + "Z");
+  let nodes = "";
+  for (let k=0;k<n;k++){ const a = (Math.PI/2 + 2*Math.PI*k)/n; if (k%2) continue;
+    nodes += `<circle class="node" r="3.4" cx="${(Ro-3)*Math.cos(a)}" cy="${(Ro-3)*Math.sin(a)}"/>`; }
+  document.getElementById("coreNodes").innerHTML = nodes;
+  let ticks = "";
+  for (let k=0;k<72;k++){ const a = 2*Math.PI*k/72, r1 = 146, r2 = k%6 ? 150 : 155;
+    ticks += `<line class="tick" x1="${r1*Math.cos(a)}" y1="${r1*Math.sin(a)}" x2="${r2*Math.cos(a)}" y2="${r2*Math.sin(a)}"/>`; }
+  document.getElementById("ticks").innerHTML = ticks;
+})();
+
+/* ---------- theme, menu, nav ---------- */
+const root = document.documentElement;
+try { const s = localStorage.getItem("theme"); if (s) root.dataset.theme = s; } catch(e){}
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch(e){}
+});
+const menuBtn = document.getElementById("menuBtn"), navList = document.getElementById("navList");
+menuBtn.addEventListener("click", () => { const o = navList.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", o); });
+navList.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { navList.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); }));
+const navLinks = [...navList.querySelectorAll("a")];
+const nio = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href")==="#"+e.target.id));
+}), {rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section.block").forEach(s => nio.observe(s));
+
+/* ---------- typed roles ---------- */
+(() => {
+  const el = document.getElementById("typed");
+  const words = ["crack", "vibrate", "absorb impact", "twist", "fail under fatigue", "delaminate"];
+  if (reduceMotion) return;
+  let wi = 0, ci = words[0].length, del = true;
+  setTimeout(function tick(){
+    const w = words[wi];
+    if (del){ ci--; if (ci <= 0){ del = false; wi = (wi+1) % words.length; } }
+    else { ci++; if (ci >= words[wi].length){ del = true; el.textContent = words[wi]; return setTimeout(tick, 1800); } }
+    el.textContent = words[wi].slice(0, Math.max(ci,0)) || "​";
+    setTimeout(tick, del ? 45 : 85);
+  }, 2000);
+})();
+
+/* ---------- colours for canvas ---------- */
+let C = {};
+const themeHooks = [];
+function readColors(){
+  const cs = getComputedStyle(root), g = n => cs.getPropertyValue(n).trim();
+  C = {line:g("--line"), acc:g("--accent"), acc2:g("--accent2"), acc3:g("--accent3"), text:g("--text"), muted:g("--muted"), faint:g("--faint"), surf:g("--surface"), surf2:g("--surface-2")};
+  themeHooks.forEach(f => f());
+}
+readColors();
+new MutationObserver(readColors).observe(root, {attributes:true, attributeFilter:["data-theme"]});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readColors);
+const A = (hex, a) => hex + Math.round(Math.max(0,Math.min(1,a))*255).toString(16).padStart(2,"0");
+
+/* ---------- XFEM mesh + crack (hero + interactive demo) ---------- */
+function MeshCrack(canvas, {h=30, interactive=false, speed=1}={}){
+  const ctx = canvas.getContext("2d");
+  let W=0, H=0, pts=[], ang=0, done=0, target=null, raf=0, visible=true;
+  function size(){
+    const r = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio||1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.max(1,Math.round(W*dpr)); canvas.height = Math.max(1,Math.round(H*dpr));
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function reset(){ pts = [[-2, H*(0.42+Math.random()*0.16)]]; ang = (Math.random()-.5)*0.3; done = 0; }
+  function grow(){
+    const [x,y] = pts[pts.length-1];
+    if (target){
+      const want = Math.atan2(target[1]-y, target[0]-x);
+      let d = want-ang; d = Math.atan2(Math.sin(d), Math.cos(d));
+      ang += Math.max(-0.09, Math.min(0.09, d));
+    } else ang += (Math.random()-.5)*0.22 - ang*0.04;
+    const step = h*0.09*speed;
+    const nx = x+Math.cos(ang)*step, ny = y+Math.sin(ang)*step;
+    if (nx > W*0.97 || nx < -6 || ny < h*0.5 || ny > H-h*0.5) { done = performance.now(); return; }
+    pts.push([nx,ny]);
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle = C.line; ctx.lineWidth = 1; ctx.beginPath();
+    for (let x=0; x<=W; x+=h){ ctx.moveTo(x+.5,0); ctx.lineTo(x+.5,H); }
+    for (let y=0; y<=H; y+=h){ ctx.moveTo(0,y+.5); ctx.lineTo(W,y+.5); }
+    ctx.stroke();
+    const tip = pts[pts.length-1];
+    const g = ctx.createRadialGradient(tip[0],tip[1],0,tip[0],tip[1],h*3.2);
+    g.addColorStop(0, A(C.acc,.33)); g.addColorStop(1, A(C.acc,0));
+    ctx.fillStyle = g; ctx.fillRect(tip[0]-h*3.2, tip[1]-h*3.2, h*6.4, h*6.4);
+    const cell = p => [Math.floor(p[0]/h), Math.floor(p[1]/h)];
+    const tc = cell(tip), cut = new Set(), tipN = new Set(), heavN = new Set();
+    for (const p of pts){ const c = cell(p); if (c[0]!==tc[0] || c[1]!==tc[1]) cut.add(c[0]+","+c[1]); }
+    for (const [di,dj] of [[0,0],[1,0],[0,1],[1,1]]) tipN.add((tc[0]+di)+","+(tc[1]+dj));
+    cut.forEach(k => { const [i,j] = k.split(",").map(Number);
+      for (const [di,dj] of [[0,0],[1,0],[0,1],[1,1]]){ const n=(i+di)+","+(j+dj); if (!tipN.has(n)) heavN.add(n); } });
+    const s = Math.max(4, h*0.2);
+    ctx.lineWidth = 1.6; ctx.strokeStyle = C.text; ctx.fillStyle = C.surf;
+    heavN.forEach(k => { const [i,j]=k.split(",").map(Number); if (i<0) return;
+      ctx.fillRect(i*h-s/2, j*h-s/2, s, s); ctx.strokeRect(i*h-s/2, j*h-s/2, s, s); });
+    ctx.fillStyle = C.acc;
+    tipN.forEach(k => { const [i,j]=k.split(",").map(Number); ctx.beginPath(); ctx.arc(i*h, j*h, s*0.62, 0, Math.PI*2); ctx.fill(); });
+    ctx.strokeStyle = C.acc; ctx.lineWidth = 2.6; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); for (const p of pts) ctx.lineTo(p[0], p[1]); ctx.stroke();
+  }
+  function frame(){
+    if (!visible){ raf = 0; return; }
+    if (done){ if (performance.now()-done > 1800) reset(); } else grow();
+    draw(); raf = requestAnimationFrame(frame);
+  }
+  function start(){ if (!raf) raf = requestAnimationFrame(frame); }
+  const settle = () => { for (let i=0;i<260 && !done;i++) grow(); };
+  size(); reset();
+  if (reduceMotion){ settle(); draw(); }
+  else { new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) start(); }).observe(canvas); start(); }
+  let lastW = W, lastH = H;
+  new ResizeObserver(() => {
+    const r = canvas.getBoundingClientRect();
+    if (Math.abs(r.width-lastW) < 1 && Math.abs(r.height-lastH) < 1) return;
+    size(); lastW = W; lastH = H; reset(); if (reduceMotion) settle(); draw();
+  }).observe(canvas);
+  themeHooks.push(draw);
+  if (interactive){
+    const pos = e => { const r = canvas.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; };
+    canvas.addEventListener("pointermove", e => { target = pos(e); });
+    canvas.addEventListener("pointerleave", () => { target = null; });
+    canvas.addEventListener("pointerdown", e => { target = pos(e); reset(); draw(); });
+  }
+}
+MeshCrack(document.getElementById("heroMesh"), {h:34, speed:0.8});
+MeshCrack(document.getElementById("demoMesh"), {h:30, interactive:true, speed:1.1});
+
+/* ---------- generic canvas animation runner ---------- */
+function anim(canvas, fn, staticT){
+  const ctx = canvas.getContext("2d"); let W=0, H=0, vis=false, raf=0; const t0 = performance.now();
+  const now = () => reduceMotion ? staticT : (performance.now()-t0)/1000;
+  function size(){ const r = canvas.getBoundingClientRect(), d = Math.min(devicePixelRatio||1,2);
+    W = r.width; H = r.height; canvas.width = Math.max(1,Math.round(W*d)); canvas.height = Math.max(1,Math.round(H*d)); ctx.setTransform(d,0,0,d,0,0); }
+  function paint(t){ ctx.clearRect(0,0,W,H); ctx.save(); fn(ctx,W,H,t); ctx.restore(); }
+  function loop(){ if (!vis){ raf = 0; return; } paint(now()); raf = requestAnimationFrame(loop); }
+  size();
+  new ResizeObserver(() => { size(); paint(now()); }).observe(canvas);
+  themeHooks.push(() => paint(now()));
+  if (reduceMotion) paint(staticT);
+  else new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && !raf) raf = requestAnimationFrame(loop); }).observe(canvas);
+}
+const font = (w, s) => `${w} ${s}px Inter, system-ui, sans-serif`;
+const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+const ease = x => x<.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2;
+
+/* 1. vibration of a cracked plate */
+function drawVib(ctx,W,H,t){
+  const nx=16, ny=12, tip=0.45, amp=Math.sin(t*2.2);
+  const L = Math.min(W/1.6, (H-34)/0.8), x0 = (W-L*1.45)/2, y0 = (H-L*0.32)/2 + 4;
+  const P = (x,y,w) => [x0 + x*L + y*L*0.45, y0 + y*L*0.32 - w*L*0.2];
+  const wv = (x,y,s) => {
+    const base = Math.sin(Math.PI*x)*Math.sin(Math.PI*y);
+    const g = x<tip ? 1-x/tip : 0, band = Math.max(0, 1-Math.abs(y-0.5)/0.32);
+    return amp*(base + 0.42*s*g*band);
+  };
+  // shaded cells
+  for (let j=0;j<ny;j++) for (let i=0;i<nx;i++){
+    const xa=i/nx, xb=(i+1)/nx, ya=j/ny, yb=(j+1)/ny, s = (ya+yb)/2 < 0.5 ? -1 : 1;
+    const w = wv((xa+xb)/2,(ya+yb)/2,s);
+    const q = [P(xa,ya,wv(xa,ya,s)),P(xb,ya,wv(xb,ya,s)),P(xb,yb,wv(xb,yb,s)),P(xa,yb,wv(xa,yb,s))];
+    ctx.fillStyle = A(w>0 ? C.acc : C.acc2, Math.abs(w)*0.45);
+    ctx.beginPath(); ctx.moveTo(...q[0]); for (let k=1;k<4;k++) ctx.lineTo(...q[k]); ctx.closePath(); ctx.fill();
+  }
+  ctx.strokeStyle = A(C.muted,.55); ctx.lineWidth = 1;
+  const line = (f, n=40) => { ctx.beginPath(); for (let k=0;k<=n;k++){ const p = f(k/n); k?ctx.lineTo(...p):ctx.moveTo(...p); } ctx.stroke(); };
+  for (let j=0;j<=ny;j++){ const y=j/ny;
+    if (j===ny/2){ line(u => P(u,y,wv(u,y,-1))); line(u => P(u,y,wv(u,y,1))); }
+    else line(u => P(u,y,wv(u,y,y<0.5?-1:1))); }
+  for (let i=0;i<=nx;i++){ const x=i/nx;
+    line(u => P(x,u*0.5,wv(x,u*0.5,-1)),20); line(u => P(x,0.5+u*0.5,wv(x,0.5+u*0.5,1)),20); }
+  // crack faces
+  ctx.strokeStyle = C.acc; ctx.lineWidth = 2.6; ctx.lineCap = "round";
+  line(u => P(u*tip,0.5,wv(u*tip,0.5,-1)),20); line(u => P(u*tip,0.5,wv(u*tip,0.5,1)),20);
+  ctx.fillStyle = C.faint; ctx.font = font(600,11.5);
+  ctx.fillText("Mode 1 · cracked laminate", 12, H-12);
+}
+
+/* 2. oblique impact on corrugated-core sandwich */
+function drawImpact(ctx,W,H,t){
+  const T=4.8, p=t%T, xL=W*0.05, xR=W*0.95, yT=H*0.56, core=H*0.2, yB=yT+core, xc=W*0.46, r=H*0.085, sig=W*0.09;
+  const th=35*Math.PI/180, dx=Math.sin(th), dy=Math.cos(th), dist=H*0.6;
+  const cx0 = xc - dx*dist, cy0 = yT - r - dy*dist;
+  let ix, iy, dent=0, alpha=1, contact=-1;
+  if (p<1.3){ const s=ease(p/1.3); ix=cx0+dx*dist*s; iy=cy0+dy*dist*s; }
+  else if (p<2.1){ const q=(p-1.3)/0.8; contact=q; dent=H*0.075*Math.sin(Math.PI*q)+H*0.022*q; ix=xc+q*W*0.035; iy=yT-r+dent; }
+  else { const q=clamp((p-2.1)/1.3,0,1), e=1-Math.pow(1-q,2); dent=H*0.022; contact=1;
+    ix=xc+W*0.035+dx*0.7*dist*e; iy=yT-r+dent-dy*0.55*dist*e; alpha = p>3.6 ? clamp(1-(p-3.6)/0.8,0,1) : 1; }
+  const xd = xc + (contact>=0 ? Math.min(contact,1)*W*0.035 : 0);
+  const def = x => dent*Math.exp(-Math.pow((x-xd)/sig,2));
+  const yAt = (x,h) => yT + h*core + def(x)*(1-0.65*h);
+  // core double sinusoid
+  const lam = W*0.13;
+  ctx.strokeStyle = C.acc2; ctx.lineWidth = 1.8;
+  for (const sgn of [1,-1]){ ctx.beginPath();
+    for (let x=xL;x<=xR;x+=2){ const h = 0.5 + 0.5*sgn*Math.sin(2*Math.PI*(x-xL)/lam); const y = yAt(x,h); x===xL?ctx.moveTo(x,y):ctx.lineTo(x,y); }
+    ctx.stroke(); }
+  // face sheets
+  ctx.fillStyle = C.text;
+  for (const h of [0,1]){ ctx.beginPath();
+    for (let x=xL;x<=xR;x+=2) { const y=yAt(x,h)-(h?0:4); x===xL?ctx.moveTo(x,y):ctx.lineTo(x,y); }
+    for (let x=xR;x>=xL;x-=2) ctx.lineTo(x, yAt(x,h)+(h?4:0));
+    ctx.closePath(); ctx.fill(); }
+  // supports
+  ctx.fillStyle = C.faint;
+  for (const x of [xL+6, xR-6]){ ctx.beginPath(); ctx.moveTo(x, yB+6); ctx.lineTo(x-7, yB+16); ctx.lineTo(x+7, yB+16); ctx.closePath(); ctx.fill(); }
+  // damage
+  if (contact>=0){ const k = Math.min(contact,1), wD = sig*1.3*k;
+    const g = ctx.createRadialGradient(xd, yAt(xd,0)+4, 0, xd, yAt(xd,0)+4, wD+1);
+    g.addColorStop(0, A(C.acc,.65)); g.addColorStop(1, A(C.acc,0));
+    ctx.fillStyle = g; ctx.fillRect(xd-wD-2, yAt(xd,0)-6, 2*wD+4, core*0.55);
+    ctx.strokeStyle = C.acc; ctx.lineWidth = 1.4;
+    for (let n=-2;n<=2;n++){ const x = xd + n*wD*0.35, y = yAt(x,0)+6; ctx.beginPath(); ctx.moveTo(x-4*k, y+3); ctx.lineTo(x+4*k, y+6); ctx.stroke(); }
+  }
+  // trail + impactor
+  ctx.setLineDash([4,5]); ctx.strokeStyle = A(C.muted,.5); ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(cx0, cy0); ctx.lineTo(xc, yT-r); ctx.stroke(); ctx.setLineDash([]);
+  ctx.globalAlpha = alpha;
+  const gi = ctx.createRadialGradient(ix-r*0.35, iy-r*0.35, r*0.1, ix, iy, r);
+  gi.addColorStop(0, C.surf); gi.addColorStop(1, C.muted);
+  ctx.fillStyle = gi; ctx.beginPath(); ctx.arc(ix, iy, r, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = C.text; ctx.lineWidth = 1.2; ctx.stroke(); ctx.globalAlpha = 1;
+  // force–time inset
+  const bx=W*0.64, by=H*0.07, bw=W*0.31, bh=H*0.27;
+  ctx.strokeStyle = C.line; ctx.lineWidth = 1; ctx.strokeRect(bx, by, bw, bh);
+  ctx.fillStyle = C.faint; ctx.font = font(600,10.5); ctx.fillText("F", bx+5, by+13); ctx.fillText("t", bx+bw-10, by+bh-5);
+  if (contact>=0){ const k = Math.min(contact,1); ctx.strokeStyle = C.acc3; ctx.lineWidth = 2; ctx.beginPath();
+    for (let u=0;u<=k;u+=0.02){ const f = Math.sin(Math.PI*u)*(1-0.15*Math.sin(5*Math.PI*u)*u); const X=bx+6+u*(bw-12), Y=by+bh-6-f*(bh-18); u?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }
+    ctx.stroke(); }
+  ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("35° oblique impact", 12, H-10);
+}
+
+/* 3. tubular sandwich under torsion */
+function drawTube(ctx,W,H,t){
+  const phi = 0.85*Math.sin(t*1.3), xa=W*0.12, xb=W*0.7, cy=H*0.5, R=Math.min(H*0.32, W*0.2), e=0.42, n=20;
+  const pt = (z,a,rr=R) => [xa + z*(xb-xa) - rr*e*Math.sin(a), cy - rr*Math.cos(a)];
+  // back lines then front
+  for (const front of [false,true]){
+    for (let i=0;i<n;i++){ const th = 2*Math.PI*i/n;
+      for (let k=0;k<24;k++){ const z0=k/24, z1=(k+1)/24, a0=th+phi*z0, a1=th+phi*z1, isFront = Math.sin((a0+a1)/2) > 0;
+        if (isFront!==front) continue;
+        ctx.strokeStyle = front ? A(C.acc, .35+.6*Math.abs(phi)/0.85) : A(C.muted,.18); ctx.lineWidth = front?1.6:1;
+        ctx.beginPath(); ctx.moveTo(...pt(z0,a0)); ctx.lineTo(...pt(z1,a1)); ctx.stroke(); } } }
+  ctx.strokeStyle = C.text; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(xa, cy-R); ctx.lineTo(xb, cy-R); ctx.moveTo(xa, cy+R); ctx.lineTo(xb, cy+R); ctx.stroke();
+  // left end
+  ctx.beginPath(); ctx.ellipse(xa, cy, R*e, R, 0, 0, Math.PI*2); ctx.strokeStyle = A(C.text,.5); ctx.stroke();
+  // right end cross-section with power-law corrugated core
+  const Ri = R*0.62;
+  ctx.fillStyle = C.surf; ctx.beginPath(); ctx.ellipse(xb, cy, R*e, R, 0, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = C.text; ctx.lineWidth = 2; ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(xb, cy, Ri*e, Ri, 0, 0, Math.PI*2); ctx.stroke();
+  ctx.strokeStyle = C.acc2; ctx.lineWidth = 1.6; ctx.beginPath();
+  for (let k=0;k<=240;k++){ const a = 2*Math.PI*k/240 + phi; const f = Math.pow(0.5+0.5*Math.sin(12*(a-phi)), 1.8);
+    const rr = Ri + (R-Ri)*(0.08+0.84*f); const p = [xb - rr*e*Math.sin(a), cy - rr*Math.cos(a)]; k?ctx.lineTo(...p):ctx.moveTo(...p); }
+  ctx.stroke();
+  // torque arrows
+  const arrow = (x, dir) => { const rx=R*e+10, ry=R+10, a0=-0.9, a1=0.9;
+    ctx.strokeStyle = C.acc3; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.ellipse(x, cy, rx, ry, 0, Math.PI+a0, Math.PI+a1); ctx.stroke();
+    const ae = Math.PI + (dir>0 ? a1 : a0), ex = x + rx*Math.cos(ae), ey = cy + ry*Math.sin(ae);
+    ctx.fillStyle = C.acc3; ctx.beginPath(); ctx.arc(ex, ey, 4, 0, Math.PI*2); ctx.fill(); };
+  arrow(xa, -Math.sign(phi)); arrow(xb + R*0.15, Math.sign(phi));
+  ctx.fillStyle = C.acc3; ctx.font = font(700,13); ctx.fillText("T", xb + R*e + 16, cy - R*0.6);
+  ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("power-law corrugated core", 12, H-10);
+}
+
+/* 4. fatigue crack growth */
+function drawFatigue(ctx,W,H,t){
+  const T=6.5, p=(t%T)/T, prog=clamp(p/0.85,0,1), cyc=Math.sin(t*2*Math.PI*1.6);
+  const aN = n => 0.12/(1-0.84*n);           // Paris-type growth, normalised
+  const aMax = aN(1);
+  // specimen
+  const sx=W*0.06, sw=W*0.26, sy=H*0.2, sh=H*0.6, st = 2*cyc;
+  ctx.fillStyle = C.surf; ctx.strokeStyle = C.text; ctx.lineWidth = 1.5;
+  ctx.fillRect(sx, sy-st, sw, sh+2*st); ctx.strokeRect(sx, sy-st, sw, sh+2*st);
+  const a = aN(prog)/aMax*sw*0.85, open = 1.5+1.5*(cyc+1)/2;
+  ctx.fillStyle = C.acc; ctx.beginPath(); ctx.moveTo(sx, H*0.5-open); ctx.lineTo(sx+a, H*0.5); ctx.lineTo(sx, H*0.5+open); ctx.closePath(); ctx.fill();
+  const g = ctx.createRadialGradient(sx+a, H*0.5, 0, sx+a, H*0.5, 18); g.addColorStop(0, A(C.acc,.4)); g.addColorStop(1, A(C.acc,0));
+  ctx.fillStyle = g; ctx.fillRect(sx+a-18, H*0.5-18, 36, 36);
+  ctx.strokeStyle = C.acc3; ctx.fillStyle = C.acc3; ctx.lineWidth = 2;
+  const L = 10 + 6*(cyc+1)/2, mx = sx+sw/2;
+  for (const [y0,d] of [[sy-st,-1],[sy+sh+st,1]]){ ctx.beginPath(); ctx.moveTo(mx, y0); ctx.lineTo(mx, y0+d*L); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(mx, y0+d*(L+6)); ctx.lineTo(mx-4, y0+d*L); ctx.lineTo(mx+4, y0+d*L); ctx.closePath(); ctx.fill(); }
+  // plot
+  const x0=W*0.44, x1=W*0.94, yb=H*0.82, yt=H*0.16;
+  ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x0, yt-6); ctx.lineTo(x0, yb); ctx.lineTo(x1+4, yb); ctx.stroke();
+  ctx.fillStyle = C.faint; ctx.font = font(600,11); ctx.fillText("a", x0-12, yt+4); ctx.fillText("N (cycles)", x1-50, yb+16);
+  ctx.setLineDash([4,4]); ctx.strokeStyle = A(C.acc,.6); ctx.beginPath(); ctx.moveTo(x0, yt); ctx.lineTo(x1, yt); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = C.acc; ctx.fillText("a_c", x1-18, yt-5);
+  ctx.strokeStyle = C.acc2; ctx.lineWidth = 2.4; ctx.beginPath();
+  for (let n=0;n<=prog+1e-6;n+=0.01){ const X = x0 + n*(x1-x0), Y = yb - aN(n)/aMax*(yb-yt); n?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }
+  ctx.stroke();
+  const Xc = x0 + prog*(x1-x0), Yc = yb - aN(prog)/aMax*(yb-yt);
+  ctx.fillStyle = C.acc2; ctx.beginPath(); ctx.arc(Xc, Yc, 4.5, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("da/dN = C(ΔK)ᵐ", x0+10, yt+18);
+}
+
+/* 5. ANN surrogate */
+function drawANN(ctx,W,H,t){
+  const layers=[4,6,6,1], xs = layers.map((_,i) => W*0.2 + i*(W*0.6)/(layers.length-1));
+  const pos = layers.map((n,i) => Array.from({length:n}, (_,k) => [xs[i], H*0.5 + (k-(n-1)/2)*Math.min(30, H*0.8/n)]));
+  const per = 2.6, ph = (t % per)/per*(layers.length-1+0.6), k = Math.floor(ph), f = ph-k;
+  ctx.lineWidth = 1;
+  for (let i=0;i<layers.length-1;i++) for (const a of pos[i]) for (const b of pos[i+1]){
+    ctx.strokeStyle = i===k ? A(C.acc,.22) : A(C.muted,.18); ctx.beginPath(); ctx.moveTo(...a); ctx.lineTo(...b); ctx.stroke(); }
+  if (k < layers.length-1){ ctx.fillStyle = C.acc;
+    for (const a of pos[k]) for (const b of pos[k+1]){ const x=a[0]+(b[0]-a[0])*f, y=a[1]+(b[1]-a[1])*f; ctx.beginPath(); ctx.arc(x,y,2.2,0,Math.PI*2); ctx.fill(); } }
+  pos.forEach((L,i) => L.forEach(p => { const lit = i<=k;
+    ctx.beginPath(); ctx.arc(p[0],p[1],7,0,Math.PI*2); ctx.fillStyle = lit ? (i===layers.length-1 ? C.acc3 : C.acc) : C.surf; ctx.fill();
+    ctx.strokeStyle = lit ? "transparent" : C.text; ctx.lineWidth = 1.4; ctx.stroke(); }));
+  ctx.fillStyle = C.muted; ctx.font = font(600,11.5); ctx.textAlign = "right";
+  ["a/W","θ","E₁/E₂","h/t"].forEach((s,i) => ctx.fillText(s, xs[0]-12, pos[0][i][1]+4));
+  ctx.textAlign = "left"; ctx.fillStyle = k>=layers.length-1 ? C.acc3 : C.muted; ctx.font = font(700,13);
+  ctx.fillText("ω₁", xs[3]+14, pos[3][0][1]+4);
+  ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("trained on HOXFEM data", 12, H-10);
+}
+
+/* 6. non-unique XFEM parameters */
+function drawParams(ctx,W,H,t){
+  const T=6.5, prog = clamp((t%T)/4.6, 0, 1);
+  const x0=W*0.1, x1=W*0.58, yb=H*0.8, yt=H*0.14;
+  ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x0, yt-6); ctx.lineTo(x0, yb); ctx.lineTo(x1+4, yb); ctx.stroke();
+  ctx.fillStyle = C.faint; ctx.font = font(600,11); ctx.fillText("Load", x0+4, yt-2); ctx.fillText("CMOD", x1-30, yb+15);
+  const sets = [{c:C.acc, cp:.34, a:1, dash:[]},{c:C.acc2, cp:.355, a:.985, dash:[6,4]},{c:C.acc3, cp:.325, a:1.015, dash:[2,4]}];
+  sets.forEach(s => { ctx.strokeStyle = s.c; ctx.lineWidth = 2.2; ctx.setLineDash(s.dash); ctx.beginPath();
+    for (let u=0;u<=prog+1e-6;u+=0.01){ const F = s.a*(u/s.cp)*Math.exp(1-u/s.cp); const X = x0+u*(x1-x0), Y = yb - F*(yb-yt)*0.92; u?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }
+    ctx.stroke(); }); ctx.setLineDash([]);
+  // crack extension bars
+  const bx=W*0.66, bw=W*0.28, lens=[1,0.62,0.36], labels=["Set A","Set B","Set C"];
+  ctx.fillStyle = C.faint; ctx.font = font(600,11); ctx.fillText("Crack extension Δa", bx, H*0.2);
+  sets.forEach((s,i) => { const y = H*0.32 + i*H*0.17;
+    ctx.fillStyle = C.line; ctx.fillRect(bx, y, bw, 10);
+    ctx.fillStyle = s.c; ctx.fillRect(bx, y, bw*lens[i]*prog, 10);
+    ctx.fillStyle = C.muted; ctx.fillText(labels[i], bx, y-4); });
+  ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("same global curve, different local damage", 12, H-10);
+}
+
+const ANIMS = {vib:[drawVib,0.7], impact:[drawImpact,1.75], tube:[drawTube,1.2], fatigue:[drawFatigue,4.2], ann:[drawANN,1.9], params:[drawParams,4.6]};
+document.querySelectorAll("canvas[data-anim]").forEach(c => { const [fn, st] = ANIMS[c.dataset.anim]; anim(c, fn, st); });
+
+/* ---------- reveal, counters, journey rail ---------- */
+document.querySelectorAll(".stat").forEach(el => el.classList.add("reveal"));
+const rio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in"); rio.unobserve(e.target);
+  const b = e.target.querySelector("b[data-count]");
+  if (b && !reduceMotion){ const n = +b.dataset.count, suf = b.dataset.suffix || "", t0 = performance.now();
+    (function step(now){ const k = Math.min(1, (now-t0)/1200); b.textContent = Math.round(n*(1-Math.pow(1-k,3))) + (k===1?suf:""); if (k<1) requestAnimationFrame(step); })(t0); }
+}), {rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".reveal").forEach(el => rio.observe(el));
+
+const jl = document.getElementById("journeyList"), rail = document.getElementById("railFill");
+function railUpdate(){
+  const r = jl.getBoundingClientRect(), h = r.height - 20;
+  const k = clamp((innerHeight*0.6 - r.top)/h, 0, 1);
+  rail.style.height = (reduceMotion ? 100 : k*100) + "%";
+}
+addEventListener("scroll", railUpdate, {passive:true}); addEventListener("resize", railUpdate); railUpdate();
+</script>
+</body>
+</html>
