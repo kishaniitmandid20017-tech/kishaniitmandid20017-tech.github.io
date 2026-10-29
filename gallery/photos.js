@@ -8,5 +8,6 @@
 //   {src: "gallery/imece-2025.jpg", caption: "Presenting at ASME IMECE-India 2025", place: "Hyderabad, India", date: "Sep 2025"},
 
 window.GALLERY = [
+  {src: "gallery/phd-defence-iit-mandi.jpg", caption: "PhD thesis defence: Fracture and Vibration Analysis of Orthotropic Composites using Higher-Order XFEM", place: "IIT Mandi", date: "Jan 2026"},
   {src: "gallery/scholar-portrait.jpg", caption: "Dr. Kishan Dwivedi", place: "", date: ""},
 ];
