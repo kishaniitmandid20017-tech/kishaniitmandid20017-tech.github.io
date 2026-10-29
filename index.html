@@ -696,7 +696,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
   <section class="block" id="conferences">
     <div class="wrap">
-      <div class="sec-head"><h2>Conferences</h2><p>International and national conferences where I have presented my work, with the papers that came out of them.</p></div>
+      <div class="sec-head"><h2>Conferences</h2><p>International and national conferences where I have spoken, presented or attended, with the papers that came out of them.</p></div>
       <div class="confs" id="confList"></div>
     </div>
   </section>
@@ -905,12 +905,13 @@ const FLAGS = {
 const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
 const CAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>';
 const confs = [
-  {acr:"EFPM 2026", name:"International Conference on Eco-Friendly Fibers and Polymeric Materials", host:"KMUTNB Techno Park, King Mongkut’s University of Technology North Bangkok", city:"Bangkok, Thailand", f:"TH", when:"2026", role:"Presented"},
   {acr:"IMECE-India 2025", name:"ASME International Mechanical Engineering Congress and Exposition – India (first IMECE held in India)", host:"Hyderabad International Convention Centre (HICC)", city:"Hyderabad, India", f:"IN", when:"10–13 September 2025", role:"Presented",
    paper:"Higher order XFEM approach for free vibration analysis of cracked composite plates", pub:"ASME Proceedings, IMECE-India 2025, Vol. 5, V005T10A046", url:"https://asmedigitalcollection.asme.org/imece-india/proceedings-abstract/IMECE-INDIA2025/1228978"},
   {acr:"CDPMHM 2024", name:"International Conference on Composites: Design, Processing, Manufacturing and Health Monitoring", host:"IIT Mandi", city:"Himachal Pradesh, India", f:"IN", when:"June 2024", role:"Presented",
    paper:"Natural frequency behavior of composite laminated plates with an extended finite element approach", pub:"Springer Proceedings in Materials, vol. 72 (2025)", url:"https://doi.org/10.1007/978-981-96-5281-5_15"},
-  {acr:"Materials Today 2023", name:"Materials Today Conference 2023 (inaugural edition, Elsevier)", host:"Singapore Expo", city:"Singapore", f:"SG", when:"2–5 August 2023", role:"Presented"},
+  {acr:"EFPM 2024", name:"1st International Conference on Eco-Friendly Fibers and Polymeric Materials (EFPM’24)", host:"King Mongkut’s University of Technology North Bangkok (KMUTNB)", city:"Bangkok, Thailand", f:"TH", when:"19–20 February 2024", role:"Invited speaker",
+   talk:"Higher order XFEM framework for natural frequency response of cracked laminated composite plates"},
+  {acr:"Materials Today 2023", name:"Materials Today Conference 2023 (inaugural edition, Elsevier)", host:"Singapore Expo", city:"Singapore", f:"SG", when:"2–5 August 2023", role:"Attended"},
   {acr:"ACMFMS 2022", name:"8th Asian Conference on Mechanics of Functional Materials and Structures", host:"IIT Guwahati", city:"Assam, India", f:"IN", when:"11–14 December 2022", role:"Paper",
    paper:"Fatigue crack growth in fiber-reinforced polymer composite laminate using higher-order XFEM", pub:"Springer Lecture Notes in Mechanical Engineering (2024)", url:"https://link.springer.com/chapter/10.1007/978-981-99-5919-8_1"},
   {acr:"INCAM 2022", name:"5th Indian Conference on Applied Mechanics", host:"NIT Jamshedpur", city:"Jharkhand, India", f:"IN", when:"11–13 November 2022", role:"Presented",
@@ -926,7 +927,9 @@ document.getElementById("confList").innerHTML = confs.map(c => `
     <div class="top"><span class="acr">${c.acr}</span><span class="fl">${FLAGS[c.f]}${CNAME[c.f]}</span></div>
     <p class="cn">${esc(c.name)}</p>
     <div class="where"><span>${PIN}${esc(c.host)}, ${esc(c.city)}</span><span>${CAL}${c.when}</span></div>
+    <div><span class="chip ${c.role==="Invited speaker" ? "accent" : ""}">${c.role}</span></div>
     ${c.paper ? `<div class="paper"><small>Paper</small><a href="${c.url}" target="_blank" rel="noopener">${esc(c.paper)}</a><br><span style="color:var(--muted)">${esc(c.pub)}</span></div>` : ""}
+    ${c.talk ? `<div class="paper"><small>Invited talk</small>${esc(c.talk)}</div>` : ""}
   </article>`).join("");
 
 /* ---------- gallery (photos listed in gallery/photos.js) ---------- */
