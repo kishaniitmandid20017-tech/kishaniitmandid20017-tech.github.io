@@ -412,7 +412,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <p class="affil">Postdoctoral Researcher · School of Computing and Artificial Intelligence, Nazarbayev University, Astana, Kazakhstan</p>
       <p class="typed">I model how composites <b id="typed">crack</b></p>
       <div class="links">
-        <a class="btn primary" href="CV_Kishan_Dwivedi.pdf?v=20261030a" target="_blank" rel="noopener" data-goatcounter-click="cv-download-top" data-goatcounter-title="Download CV (top)">
+        <a class="btn primary" href="CV_Kishan_Dwivedi.pdf?v=20261030b" target="_blank" rel="noopener" data-goatcounter-click="cv-download-top" data-goatcounter-title="Download CV (top)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>Download CV</a>
         <a class="btn" href="https://scholar.google.com/citations?user=7P_I0AYAAAAJ&hl=en" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.8 9.6V16c0 2 3 4 6.8 4s6.8-2 6.8-4v-3.4L12 16.3l-6.8-3.7z"/></svg>Google Scholar</a>
@@ -760,7 +760,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <p style="margin:0 0 14px">Open to collaborations on computational mechanics of composites, fracture and impact modelling, and to research positions in FEM and composite structures.</p>
           <div class="links">
             <a class="btn primary" href="mailto:kishan.dwivedi@nu.edu.kz">Get in touch</a>
-            <a class="btn" href="CV_Kishan_Dwivedi.pdf?v=20261030a" target="_blank" rel="noopener" data-goatcounter-click="cv-download-contact" data-goatcounter-title="View CV (contact)">View CV</a>
+            <a class="btn" href="CV_Kishan_Dwivedi.pdf?v=20261030b" target="_blank" rel="noopener" data-goatcounter-click="cv-download-contact" data-goatcounter-title="View CV (contact)">View CV</a>
           </div>
         </div>
       </div>
@@ -911,7 +911,8 @@ const confs = [
    paper:"Natural frequency behavior of composite laminated plates with an extended finite element approach", pub:"Springer Proceedings in Materials, vol. 72 (2025)", url:"https://doi.org/10.1007/978-981-96-5281-5_15"},
   {acr:"EFPM 2024", name:"1st International Conference on Eco-Friendly Fibers and Polymeric Materials (EFPM’24)", host:"King Mongkut’s University of Technology North Bangkok (KMUTNB)", city:"Bangkok, Thailand", f:"TH", when:"19–20 February 2024", role:"Invited speaker",
    talk:"Higher order XFEM framework for natural frequency response of cracked laminated composite plates"},
-  {acr:"Materials Today 2023", name:"Materials Today Conference 2023 (inaugural edition, Elsevier)", host:"Singapore Expo", city:"Singapore", f:"SG", when:"2–5 August 2023", role:"Attended"},
+  {acr:"Materials Today 2023", name:"Materials Today Conference 2023 (inaugural edition, Elsevier)", host:"Singapore Expo", city:"Singapore", f:"SG", when:"2–5 August 2023", role:"Poster presented",
+   poster:"Multiscale modeling of CNT-based polymer composite using higher order XFEM", pub:"Kishan Dwivedi, Himanshu Pathak", url:"https://www.researchgate.net/publication/376713508_Multiscale_modeling_of_CNT-based_polymer_composite_using_higher_order_XFEM"},
   {acr:"ACMFMS 2022", name:"8th Asian Conference on Mechanics of Functional Materials and Structures", host:"IIT Guwahati", city:"Assam, India", f:"IN", when:"11–14 December 2022", role:"Paper",
    paper:"Fatigue crack growth in fiber-reinforced polymer composite laminate using higher-order XFEM", pub:"Springer Lecture Notes in Mechanical Engineering (2024)", url:"https://link.springer.com/chapter/10.1007/978-981-99-5919-8_1"},
   {acr:"INCAM 2022", name:"5th Indian Conference on Applied Mechanics", host:"NIT Jamshedpur", city:"Jharkhand, India", f:"IN", when:"11–13 November 2022", role:"Presented",
@@ -930,6 +931,7 @@ document.getElementById("confList").innerHTML = confs.map(c => `
     <div><span class="chip ${c.role==="Invited speaker" ? "accent" : ""}">${c.role}</span></div>
     ${c.paper ? `<div class="paper"><small>Paper</small><a href="${c.url}" target="_blank" rel="noopener">${esc(c.paper)}</a><br><span style="color:var(--muted)">${esc(c.pub)}</span></div>` : ""}
     ${c.talk ? `<div class="paper"><small>Invited talk</small>${esc(c.talk)}</div>` : ""}
+    ${c.poster ? `<div class="paper"><small>Poster</small><a href="${c.url}" target="_blank" rel="noopener">${esc(c.poster)}</a><br><span style="color:var(--muted)">${esc(c.pub)}</span></div>` : ""}
   </article>`).join("");
 
 /* ---------- gallery (photos listed in gallery/photos.js) ---------- */
