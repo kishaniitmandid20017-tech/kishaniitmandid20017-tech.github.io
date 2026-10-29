@@ -8,5 +8,5 @@
 //   {src: "gallery/imece-2025.jpg", caption: "Presenting at ASME IMECE-India 2025", place: "Hyderabad, India", date: "Sep 2025"},
 
 window.GALLERY = [
-
+  {src: "gallery/scholar-portrait.jpg", caption: "Dr. Kishan Dwivedi", place: "", date: ""},
 ];
