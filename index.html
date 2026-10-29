@@ -775,7 +775,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </footer>
 
-<script src="gallery/photos.js"></script>
+<script>
+// load the photo list fresh on every visit (GitHub Pages lets browsers cache files for 10 minutes)
+window.galleryReady = new Promise(done => { const s = document.createElement("script");
+  s.src = "gallery/photos.js?t=" + Date.now(); s.onload = s.onerror = done; document.head.appendChild(s); });
+</script>
 <script>
 document.documentElement.classList.add("js");
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -926,7 +930,7 @@ document.getElementById("confList").innerHTML = confs.map(c => `
   </article>`).join("");
 
 /* ---------- gallery (photos listed in gallery/photos.js) ---------- */
-(() => {
+window.galleryReady.then(() => {
   const photos = (window.GALLERY || []).filter(p => p && p.src);
   if (!photos.length) return;
   document.getElementById("gallery").hidden = false;
@@ -935,7 +939,7 @@ document.getElementById("confList").innerHTML = confs.map(c => `
         lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
   const meta = p => [p.place, p.date].filter(Boolean).join(" · ");
   grid.innerHTML = photos.map((p,i) => `
-    <button class="gitem reveal" data-i="${i}" type="button">
+    <button class="gitem" data-i="${i}" type="button">
       <img src="${p.src}" alt="${esc(p.caption||"")}" loading="lazy">
       ${p.caption || meta(p) ? `<div class="gcap"><b>${esc(p.caption||"")}</b><span>${esc(meta(p))}</span></div>` : ""}
     </button>`).join("");
@@ -951,7 +955,7 @@ document.getElementById("confList").innerHTML = confs.map(c => `
   lb.addEventListener("click", e => { if (e.target === lb) close(); });
   addEventListener("keydown", e => { if (lb.hidden) return;
     if (e.key==="Escape") close(); else if (e.key==="ArrowLeft") show(cur-1); else if (e.key==="ArrowRight") show(cur+1); });
-})();
+});
 
 /* ---------- hero ring: power-law corrugated core between two face sheets ---------- */
 (() => {
