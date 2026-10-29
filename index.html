@@ -185,6 +185,10 @@ section.block{padding:62px 0;border-top:1px solid var(--line)}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 .tile:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.04),0 18px 40px rgba(20,20,30,.12)}
 .tile canvas{display:block;width:100%;height:210px;background:var(--surface-2)}
+.tile.wide{grid-column:1/-1;display:grid;grid-template-columns:1.7fr 1fr}
+.tile.wide canvas{height:100%;min-height:330px}
+.tile.wide .tb p{flex:none}
+@media (max-width:860px){.tile.wide{grid-template-columns:1fr}.tile.wide canvas{height:300px;min-height:0}}
 .tile .tb{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .tile .tag{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3)}
 .tile h3{font-size:18px}
@@ -509,10 +513,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
             <p>Once trained on XFEM results, a small neural network returns natural frequencies or fatigue life almost instantly, so designers can explore many crack cases quickly.</p>
             <a class="more" href="https://doi.org/10.1080/15397734.2025.2454351" target="_blank" rel="noopener">Related paper ↗</a></div>
         </article>
-        <article class="tile reveal">
-          <canvas data-anim="params" aria-label="Animated load–CMOD curves for different XFEM parameter sets"></canvas>
-          <div class="tb"><span class="tag">Pipeline steel · UAlberta</span><h3>Same curve, different cracks</h3>
-            <p>Different XFEM parameter sets can give the same load–CMOD curve but very different crack growth. A maximum-longitudinal-strain criterion picks out the unique set.</p>
+        <article class="tile wide reveal">
+          <canvas data-anim="params" aria-label="Animated CT specimen: longitudinal strain contour moving with the crack tip, beside Force–CMOD curves for three XFEM parameter sets"></canvas>
+          <div class="tb"><span class="tag">Pipeline steel · CT specimen · UAlberta</span><h3>The strain travels with the crack tip</h3>
+            <p>In a compact-tension (CT) specimen, the longitudinal strain LE22 above the crack peaks just ahead of the tip and moves forward with it as the crack grows. The contour is shown only for the half above the crack plane.</p>
+            <p>Three XFEM parameter sets give almost the same Force–CMOD curve, yet their crack tips end up in different places: crack length differs by about 7%. Tracking the maximum LE22 locates the true tip and picks the unique parameter set.</p>
             <a class="more" href="https://doi.org/10.1016/j.engfracmech.2025.111351" target="_blank" rel="noopener">Related paper ↗</a></div>
         </article>
       </div>
@@ -1249,27 +1254,91 @@ function drawANN(ctx,W,H,t){
   ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("trained on HOXFEM data", 12, H-10);
 }
 
-/* 6. non-unique XFEM parameters */
+/* 6. CT specimen: LE22 contour (upper half) travelling with the crack tip + Force–CMOD for three XFEM parameter sets */
+const RAINBOW = [[0,0,255],[0,93,255],[0,185,255],[0,255,232],[0,255,139],[0,255,46],[46,255,0],[139,255,0],[232,255,0],[255,185,0],[255,93,0],[255,0,0]];
 function drawParams(ctx,W,H,t){
-  const T=6.5, prog = clamp((t%T)/4.6, 0, 1);
-  const x0=W*0.1, x1=W*0.58, yb=H*0.8, yt=H*0.14;
-  ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x0, yt-6); ctx.lineTo(x0, yb); ctx.lineTo(x1+4, yb); ctx.stroke();
-  ctx.fillStyle = C.faint; ctx.font = font(600,11); ctx.fillText("Load", x0+4, yt-2); ctx.fillText("CMOD", x1-30, yb+15);
-  const sets = [{c:C.acc, cp:.34, a:1, dash:[]},{c:C.acc2, cp:.355, a:.985, dash:[6,4]},{c:C.acc3, cp:.325, a:1.015, dash:[2,4]}];
-  sets.forEach(s => { ctx.strokeStyle = s.c; ctx.lineWidth = 2.2; ctx.setLineDash(s.dash); ctx.beginPath();
-    for (let u=0;u<=prog+1e-6;u+=0.01){ const F = s.a*(u/s.cp)*Math.exp(1-u/s.cp); const X = x0+u*(x1-x0), Y = yb - F*(yb-yt)*0.92; u?ctx.lineTo(X,Y):ctx.moveTo(X,Y); }
+  const T=7.5, u = clamp((t%T)/5.8, 0, 1);              // loading progress (CMOD)
+  const ss = (a,b,x) => { const k = clamp((x-a)/(b-a),0,1); return k*k*(3-2*k); };
+  // ---- specimen geometry (ASTM E1820 proportions, units of W) ----
+  const LW = 1.25, LH = 1.2, xLL = 0.25, pinY = 0.275, pinR = 0.125, xN = xLL + 0.45, slot = 0.018;
+  const narrow = W < 560;
+  const panelW = narrow ? W - 24 : W*0.52, panelH = narrow ? H*0.56 : H - 66;
+  const s = Math.min(panelW/LW, panelH/LH), X0 = 14, Yc = (narrow ? 16 : 22) + LH*s/2;
+  const xt = xN + 0.32*ss(0.28, 1, u);                    // crack tip of set A
+  const open = (0.012 + 0.055*u);                         // mouth opening (W units), exaggerated
+  const v = x => open * Math.max(0, xt - x) / xt;         // half-opening profile behind the tip
+  const P = (x, y, sgn) => [X0 + x*s, Yc - (y + sgn*v(x))*s];
+  const F = (u/0.34)*Math.exp(1-u/0.34);                  // normalised force
+  const amp = 0.35 + 0.65*Math.min(1, u/0.3);
+  const inHole = (x,y) => Math.hypot(x-xLL, Math.abs(y)-pinY) < pinR;
+  // deformed outline of one half (sg = +1 upper, -1 lower), traced so the kink at the crack tip is kept
+  const notchY = x => x < xN ? slot*(1 - Math.max(0,(x-xN+0.06)/0.06)) : 0;
+  const half = sg => { ctx.beginPath(); ctx.moveTo(...P(0, sg*notchY(0), sg));
+    for (let x=0; x<=LW+1e-6; x+=0.01) ctx.lineTo(...P(Math.min(x,LW), sg*notchY(x), sg));
+    for (let x=LW; x>=-1e-6; x-=0.01) ctx.lineTo(...P(Math.max(x,0), sg*LH/2, sg));
+    ctx.closePath(); };
+  // lower half: plain, no contour
+  ctx.fillStyle = A(C.muted, .18); half(-1); ctx.fill();
+  // upper half: banded LE22 contour (mode-I angular form, ~1/sqrt(r) near the tip), clipped to the deformed outline
+  ctx.save(); half(1); ctx.clip();
+  const d = 0.012, nb = RAINBOW.length;
+  for (let x=0; x<LW; x+=d) for (let y=0; y<LH/2; y+=d){
+    const cx = x+d/2, cy = y+d/2;
+    if (inHole(cx,cy)) continue;
+    if (cx < xN && cy < slot*(1 - Math.max(0,(cx-xN+0.06)/0.06))) continue;
+    const r = Math.hypot(cx-xt, cy), th = Math.atan2(cy, cx-xt);
+    let g = Math.cos(th/2)*(1 + Math.sin(th/2)*Math.sin(1.5*th)) / 1.3 / Math.sqrt(r/0.025 + 1);
+    g += 0.10*(1 - cy/(LH/2))*(cx > xt ? 1 : 0.25);
+    const val = clamp(amp*g*1.25, 0, 0.999), c = RAINBOW[Math.floor(val*nb)];
+    const [px, py] = P(cx-d/2, cy+d/2, 1);
+    ctx.fillStyle = `rgb(${c[0]},${c[1]},${c[2]})`; ctx.fillRect(px, py - 1, d*s+1, d*s+2);
+  }
+  ctx.restore();
+  // outlines
+  ctx.strokeStyle = C.text; ctx.lineWidth = 1.4;
+  for (const sg of [1,-1]){
+    half(sg); ctx.stroke();
+    const [hx, hy] = P(xLL, sg*pinY, sg);
+    ctx.fillStyle = C.surf2; ctx.beginPath(); ctx.arc(hx, hy, pinR*s, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+    // pin load arrows
+    const L = 10 + 26*F, dir = -sg;
+    ctx.strokeStyle = C.acc3; ctx.fillStyle = C.acc3; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(hx, hy + dir*(pinR*s + L)); ctx.stroke();
+    const ay = hy + dir*(pinR*s + L + 7);
+    ctx.beginPath(); ctx.moveTo(hx, ay); ctx.lineTo(hx-5, ay - dir*8); ctx.lineTo(hx+5, ay - dir*8); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = C.text; ctx.lineWidth = 1.4;
+  }
+  // notch faces and grown crack
+  ctx.strokeStyle = C.text; ctx.lineWidth = 1.2;
+  for (const sg of [1,-1]){ ctx.beginPath(); ctx.moveTo(...P(0, sg*slot, sg)); ctx.lineTo(...P(xN-0.06, sg*slot, sg)); ctx.lineTo(...P(xN, 0, sg)); ctx.stroke(); }
+  ctx.strokeStyle = "#111"; ctx.lineWidth = 2.2;
+  for (const sg of [1,-1]){ ctx.beginPath(); ctx.moveTo(...P(xN,0,sg)); ctx.lineTo(...P(xt,0,sg)); ctx.stroke(); }
+  // crack tips of the three parameter sets (lengths differ by ~7%)
+  const grow = xt - xN, tips = [[xt, C.acc, "A"], [xN + grow*1.07, C.acc2, "B"], [xN + grow*0.93, C.acc3, "C"]];
+  if (grow > 0.01) tips.forEach(([x, col, lb], i) => { const [tx, ty] = P(x, 0, 0);
+    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(tx, ty, 3.6, 0, Math.PI*2); ctx.fill();
+    ctx.font = font(700,10); ctx.fillText(lb, tx - 3, ty + 15 + i*9); });
+  // colour bar
+  const bx = X0 + LW*s + 10, bh = LH*s*0.42, by = Yc - LH*s/2 + 4;
+  if (!narrow){ for (let i=0;i<nb;i++){ const c = RAINBOW[nb-1-i]; ctx.fillStyle = `rgb(${c[0]},${c[1]},${c[2]})`; ctx.fillRect(bx, by + i*bh/nb, 9, bh/nb + 0.5); }
+    ctx.fillStyle = C.muted; ctx.font = font(700,10.5); ctx.fillText("LE22", bx - 2, by - 5);
+    ctx.font = font(600,9.5); ctx.fillText("max", bx + 12, by + 8); ctx.fillText("min", bx + 12, by + bh); }
+  // ---- Force–CMOD plot ----
+  const gx0 = narrow ? 34 : W*0.64, gx1 = W - 14, gy1 = narrow ? H*0.66 : 28, gy0 = H - 32;
+  ctx.strokeStyle = C.muted; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(gx0, gy1-4); ctx.lineTo(gx0, gy0); ctx.lineTo(gx1, gy0); ctx.stroke();
+  ctx.fillStyle = C.faint; ctx.font = font(600,10.5); ctx.fillText("Force", gx0 + 5, gy1 + 6); ctx.fillText("CMOD", gx1 - 32, gy0 + 14);
+  const sets = [{c:C.acc, cp:.34, a:1, dash:[]},{c:C.acc2, cp:.352, a:.988, dash:[7,4]},{c:C.acc3, cp:.329, a:1.012, dash:[2,4]}];
+  sets.forEach(st => { ctx.strokeStyle = st.c; ctx.lineWidth = 2.2; ctx.setLineDash(st.dash); ctx.beginPath();
+    for (let k=0;k<=u+1e-6;k+=0.01){ const f = st.a*(k/st.cp)*Math.exp(1-k/st.cp); const Xp = gx0 + k*(gx1-gx0-6), Yp = gy0 - f*(gy0-gy1)*0.88; k?ctx.lineTo(Xp,Yp):ctx.moveTo(Xp,Yp); }
     ctx.stroke(); }); ctx.setLineDash([]);
-  // crack extension bars
-  const bx=W*0.66, bw=W*0.28, lens=[1,0.62,0.36], labels=["Set A","Set B","Set C"];
-  ctx.fillStyle = C.faint; ctx.font = font(600,11); ctx.fillText("Crack extension Δa", bx, H*0.2);
-  sets.forEach((s,i) => { const y = H*0.32 + i*H*0.17;
-    ctx.fillStyle = C.line; ctx.fillRect(bx, y, bw, 10);
-    ctx.fillStyle = s.c; ctx.fillRect(bx, y, bw*lens[i]*prog, 10);
-    ctx.fillStyle = C.muted; ctx.fillText(labels[i], bx, y-4); });
-  ctx.fillStyle = C.faint; ctx.font = font(600,11.5); ctx.fillText("same global curve, different local damage", 12, H-10);
+  const mx = gx0 + u*(gx1-gx0-6), my = gy0 - F*(gy0-gy1)*0.88;
+  ctx.setLineDash([3,4]); ctx.strokeStyle = A(C.muted,.5); ctx.beginPath(); ctx.moveTo(mx, gy0); ctx.lineTo(mx, my); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = C.acc; ctx.beginPath(); ctx.arc(mx, my, 4.5, 0, Math.PI*2); ctx.fill();
+  if (!narrow){ ["Set A","Set B","Set C"].forEach((lb,i) => { ctx.fillStyle = sets[i].c; ctx.fillRect(gx1 - 52, gy1 + 4 + i*15, 12, 3); ctx.fillStyle = C.muted; ctx.font = font(600,10); ctx.fillText(lb, gx1 - 36, gy1 + 9 + i*15); }); }
+  ctx.fillStyle = C.faint; ctx.font = font(600,11); ctx.fillText(narrow ? "LE22 above the crack · Force–CMOD" : "CT specimen · LE22 shown above the crack plane only", 12, H - 10);
 }
 
-const ANIMS = {vib:[drawVib,0.7], impact:[drawImpact,1.75], tube:[drawTube,1.2], fatigue:[drawFatigue,4.2], ann:[drawANN,1.9], params:[drawParams,4.6]};
+const ANIMS = {vib:[drawVib,0.7], impact:[drawImpact,1.75], tube:[drawTube,1.2], fatigue:[drawFatigue,4.2], ann:[drawANN,1.9], params:[drawParams,4.4]};
 document.querySelectorAll("canvas[data-anim]").forEach(c => { const [fn, st] = ANIMS[c.dataset.anim]; anim(c, fn, st); });
 
 /* ---------- reveal, counters, journey rail ---------- */
