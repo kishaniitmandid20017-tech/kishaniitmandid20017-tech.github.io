@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kishaniitmandid20017-tech.github.io/sitemap.xml
