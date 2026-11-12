@@ -1644,7 +1644,7 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
         bar = document.getElementById("wbar"), count = document.getElementById("globeCount"), list = document.getElementById("wstops"),
         playBtn = document.getElementById("globePlay");
   let W = 0, H = 0, cur = -1, rot = [-78, -20], zoom = 1, fly = null, dwellT0 = 0, last = 0, paused = reduceMotion,
-      proj, path, grat, countries, borders, visited, ready = false, booted = false, vis = false, raf = 0, drag = null;
+      proj, path, grat, countries, visited, lastDraw = 0, ready = false, booted = false, vis = false, raf = 0, drag = null;
   const target = s => [-s.lon, -s.lat*TILT];
   const ll = s => [s.lon, s.lat];
 
@@ -1711,13 +1711,19 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
     else { sea.addColorStop(0, "#bfe6fb"); sea.addColorStop(.55, "#7cc0ea"); sea.addColorStop(1, "#3f8fcc"); }
     ctx.beginPath(); path({type:"Sphere"}); ctx.fillStyle = sea; ctx.fill();
     ctx.beginPath(); path(grat); ctx.strokeStyle = dark ? "#ffffff1a" : "#ffffff66"; ctx.lineWidth = .6; ctx.stroke();
-    // countries in soft map colours; the ones I have been to stand out
-    ctx.globalAlpha = dark ? .78 : 1;
-    countries.forEach((f, i) => { ctx.beginPath(); path(f); ctx.fillStyle = PALETTE[i % PALETTE.length]; ctx.fill(); });
-    ctx.globalAlpha = 1;
-    ctx.beginPath(); path(visited); ctx.fillStyle = A(C.acc, dark ? .4 : .28); ctx.fill();
-    ctx.beginPath(); path(borders); ctx.strokeStyle = dark ? "#0f2c52aa" : "#ffffffcc"; ctx.lineWidth = .6; ctx.stroke();
-    ctx.beginPath(); path(visited); ctx.strokeStyle = C.acc; ctx.lineWidth = 1.1; ctx.stroke();
+    // countries in soft map colours; the ones I have been to stand out.
+    // Countries wholly on the far side are skipped, and each outline is projected once (fill + border from the same path)
+    const ctr = [-rot[0], -rot[1]], border = dark ? "#0f2c52aa" : "#ffffffcc", tint = A(C.acc, dark ? .4 : .28);
+    ctx.lineWidth = .6; ctx.strokeStyle = border;
+    countries.forEach((f, i) => {
+      if (d3.geoDistance(f.c, ctr) - f.r > Math.PI/2) return;
+      ctx.beginPath(); path(f);
+      ctx.globalAlpha = dark ? .78 : 1; ctx.fillStyle = PALETTE[i % PALETTE.length]; ctx.fill(); ctx.globalAlpha = 1;
+      if (f.v){ ctx.fillStyle = tint; ctx.fill(); }
+      ctx.stroke();
+    });
+    ctx.strokeStyle = C.acc; ctx.lineWidth = 1.1;
+    for (const f of visited) if (d3.geoDistance(f.c, ctr) - f.r <= Math.PI/2){ ctx.beginPath(); path(f); ctx.stroke(); }
     // soft shade on the far side for a rounder look
     const shade = ctx.createRadialGradient(cx - R*.3, cy - R*.35, R*.4, cx, cy, R*1.02);
     shade.addColorStop(0, "#00000000"); shade.addColorStop(1, dark ? "#00000066" : "#0b2a4a33");
@@ -1776,7 +1782,9 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
       bar.style.transform = `scaleX(${clamp(k, 0, 1)})`;
       if (k >= 1) select(cur + 1);
     } else bar.style.transform = "scaleX(0)";
-    draw(now); raf = requestAnimationFrame(frame);
+    // the globe is the heaviest drawing on the page, so it repaints at ~30 fps
+    if (now - lastDraw > 30){ lastDraw = now; draw(now); }
+    raf = requestAnimationFrame(frame);
   }
   const run = () => { if (ready && vis && !reduceMotion && !raf){ dwellT0 = Math.max(dwellT0, performance.now()); last = 0; raf = requestAnimationFrame(frame); } };
 
@@ -1815,10 +1823,18 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
       await load(cdn + "d3-geo@3.1.1/dist/d3-geo.min.js");
       await load(cdn + "topojson-client@3.1.0/dist/topojson-client.min.js");
       const w = await (await fetch(cdn + "world-atlas@2.0.2/countries-110m.json")).json();
-      countries = topojson.feature(w, w.objects.countries).features;
-      borders = topojson.mesh(w, w.objects.countries, (a, b) => a !== b);
-      visited = {type:"FeatureCollection", features:countries.filter(f => VISITED.has(f.id))};
-      proj = d3.geoOrthographic().clipAngle(90).precision(.5);
+      // drop every other vertex on long rings (about 40% fewer points, invisible at this size),
+      // and store each country's centre and angular radius so far-side countries can be skipped
+      const thin = r => r.length < 24 ? r : r.filter((p, i) => i % 2 === 0 || i === r.length - 1);
+      countries = topojson.feature(w, w.objects.countries).features.map(f => {
+        const g = f.geometry, polys = (g.type === "Polygon" ? [g.coordinates] : g.coordinates).map(P => P.map(thin));
+        const nf = {type:"Feature", id:f.id, geometry:{type:"MultiPolygon", coordinates:polys}, v:VISITED.has(f.id)};
+        nf.c = d3.geoCentroid(nf); nf.r = 0;
+        polys.forEach(P => P[0].forEach(q => { nf.r = Math.max(nf.r, d3.geoDistance(nf.c, q)); }));
+        return nf;
+      });
+      visited = countries.filter(f => f.v);
+      proj = d3.geoOrthographic().clipAngle(90).precision(1.5);
       path = d3.geoPath(proj, ctx); grat = d3.geoGraticule10();
       ready = true; msg.hidden = true; size(); draw(); run();
     } catch(err){ msg.textContent = "The globe could not load. The places are listed below."; }
@@ -1827,7 +1843,9 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
   select(0);
   new ResizeObserver(() => { size(); draw(); }).observe(box);
   themeHooks.push(() => draw());
-  new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && !booted) boot(); run(); }, {rootMargin:"250px 0px"}).observe(box);
+  // fetch the map a little before the section arrives, but animate only while it is actually on screen
+  new IntersectionObserver(es => { if (es[0].isIntersecting && !booted) boot(); }, {rootMargin:"300px 0px"}).observe(box);
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; run(); }).observe(box);
 })();
 </script>
 <!-- visitor statistics: https://kishandwivedi.goatcounter.com (no cookies, no personal data) -->
