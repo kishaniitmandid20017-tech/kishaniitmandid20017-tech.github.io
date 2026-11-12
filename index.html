@@ -281,6 +281,48 @@ section.block{padding:62px 0;border-top:1px solid var(--line)}
 .pub .when{font-size:13px;color:var(--faint);font-weight:600}
 @media (max-width:560px){.pub{grid-template-columns:64px 1fr;gap:12px}.cover{width:64px;height:86px;padding:6px 6px 6px 10px}.cover .ca{font-size:13px}.cover .cp{font-size:7px}}
 
+/* world globe */
+.k-study{--k:var(--accent2)}.k-research{--k:var(--accent3)}.k-conference{--k:var(--accent)}.k-now{--k:#22a06b}
+.world{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.globe-box{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;min-height:480px}
+.globe-box canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+.globe-box canvas.drag{cursor:grabbing}
+.globe-ctrl{position:absolute;left:14px;bottom:14px;display:flex;gap:6px}
+.globe-ctrl button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 85%,transparent);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0}
+.globe-ctrl button:hover{border-color:var(--accent);color:var(--accent)}
+.globe-ctrl svg{width:16px;height:16px}
+.globe-count{position:absolute;right:16px;bottom:22px;font-size:12.5px;font-weight:700;letter-spacing:.08em;color:var(--faint);font-variant-numeric:tabular-nums}
+.globe-hint{position:absolute;left:16px;top:14px;font-size:12.5px;color:var(--faint);pointer-events:none}
+.globe-msg{position:absolute;inset:0;display:grid;place-items:center;color:var(--faint);font-size:14px;text-align:center;padding:20px}
+.globe-msg[hidden]{display:none}
+.wcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:26px 24px 24px;position:relative;overflow:hidden;display:flex}
+.wcard::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--k)}
+.wbody{display:flex;flex-direction:column;gap:10px;width:100%}
+.wbody.swap{animation:wfade .55s ease}
+@keyframes wfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wk{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.wkind{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;color:var(--k);background:color-mix(in srgb,var(--k) 13%,transparent)}
+.wfl{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.wfl svg{width:24px;height:16px;border-radius:2px;box-shadow:0 0 0 1px var(--line)}
+.wplace{font-family:var(--display);font-weight:800;font-size:36px;line-height:1.05;margin:6px 0 0}
+.winst{font-family:var(--serif);font-size:18px;font-weight:600;margin:0}
+.wttl{margin:0;font-weight:600;color:var(--k)}
+.wttl span{color:var(--faint);font-weight:500}
+.wbody ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.wbody li{position:relative;padding-left:18px;font-size:14.5px;color:var(--muted)}
+.wbody li::before{content:"✦";position:absolute;left:0;top:2px;font-size:11px;color:var(--k)}
+.wmore{margin-top:auto;padding-top:8px;font-size:13.5px;font-weight:600}
+.wbar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--k);transform-origin:0 50%;transform:scaleX(0);opacity:.6}
+.wstops{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.wstops button{font:inherit;font-size:13.5px;font-weight:500;padding:6px 12px 6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.wstops button:hover{color:var(--text);border-color:var(--k)}
+.wstops button i,.wlegend i{width:8px;height:8px;border-radius:50%;background:var(--k);flex:none}
+.wstops button b{font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
+.wstops button[aria-current="true"]{border-color:var(--k);color:var(--text);box-shadow:inset 0 0 0 1px var(--k)}
+.wlegend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:13px;color:var(--faint)}
+.wlegend span{display:inline-flex;align-items:center;gap:6px}
+@media (max-width:860px){.world{grid-template-columns:1fr}.globe-box{min-height:0;height:min(92vw,440px)}.wcard{min-height:310px}.wplace{font-size:30px}}
+
 /* mentors */
 .mentors{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
 .mentor{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
@@ -379,6 +421,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#journey">Journey</a></li>
+        <li><a href="#world">World</a></li>
         <li><a href="#mentors">Mentors</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#conferences">Conferences</a></li>
@@ -638,6 +681,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="block" id="world">
+    <div class="wrap">
+      <div class="sec-head"><h2>Around the world</h2><p>Every pin is a place my research has taken me: degrees, research stays and conferences. The globe tours them in order. Drag it to spin, or pick a stop.</p></div>
+      <div class="world">
+        <div class="globe-box" id="globeBox">
+          <canvas id="globe" role="img" aria-label="Rotating globe marking the places Kishan Dwivedi has studied, worked and presented"></canvas>
+          <span class="globe-hint">Drag to spin · click a pin</span>
+          <p class="globe-msg" id="globeMsg">Loading the globe…</p>
+          <div class="globe-ctrl">
+            <button type="button" id="globePrev" aria-label="Previous place"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button type="button" id="globePlay" aria-label="Pause the tour"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+            <button type="button" id="globeNext" aria-label="Next place"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+          <span class="globe-count" id="globeCount"></span>
+        </div>
+        <article class="wcard" id="wcard" aria-live="polite"><div class="wbody" id="wbody"></div><i class="wbar" id="wbar"></i></article>
+      </div>
+      <ol class="wstops" id="wstops" aria-label="Places"></ol>
+      <div class="wlegend"><span class="k-study"><i></i>Degree</span><span class="k-research"><i></i>Research stay</span><span class="k-conference"><i></i>Conference</span><span class="k-conference"><i style="background:none;box-shadow:inset 0 0 0 2px var(--k)"></i>Online conference</span><span class="k-now"><i></i>Where I am now</span></div>
     </div>
   </section>
 
@@ -1556,6 +1621,234 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
   document.getElementById("contact").scrollIntoView({behavior: reduceMotion ? "auto" : "smooth"});
   setTimeout(() => { card.classList.add("flash"); setTimeout(() => card.classList.remove("flash"), 1600); }, 500);
 }));
+
+/* ---------- around the world: globe tour (d3-geo + world-atlas, loaded when the section comes near) ---------- */
+(() => {
+  FLAGS.CA = '<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect width="7.5" height="20" fill="#D52B1E"/><rect x="22.5" width="7.5" height="20" fill="#D52B1E"/><path d="M15 4.2l1.1 2.3 1.9-.7-.7 3.2 1.8-1-.4 1.7 1.5.4-2.7 2.1.4 1.1-2.8-.5V15.6h-.4v-2.8l-2.8.5.4-1.1-2.7-2.1 1.5-.4-.4-1.7 1.8 1-.7-3.2 1.9.7z" fill="#D52B1E"/></svg>';
+  FLAGS.KZ = '<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#00AFCA"/><circle cx="15.5" cy="8.6" r="3.4" fill="#FEC50C"/><path d="M9.5 13.4q6 2.6 12 0" stroke="#FEC50C" stroke-width="1.1" fill="none"/><rect x="2.2" y="2" width="1.4" height="16" fill="#FEC50C"/></svg>';
+  Object.assign(CNAME, {CA:"Canada", KZ:"Kazakhstan"});
+  // chronological; z = zoom while the globe rests on that stop
+  const STOPS = [
+    {yr:"2011", place:"Kanpur", f:"IN", lat:26.45, lon:80.33, z:1.12, k:"study", inst:"Kanpur Institute of Technology (KIT)", title:"B.Tech, Mechanical Engineering", when:"2011 – 2015",
+     items:["Bachelor’s degree in mechanical engineering", "Went on to qualify GATE 2017"], link:"#journey"},
+    {yr:"2017", place:"Srinagar", f:"IN", lat:34.125, lon:74.84, z:1.12, k:"study", inst:"National Institute of Technology Srinagar", title:"M.Tech, Mechanical System Design", when:"2017 – 2019",
+     items:["CGPA 8.42 · GATE Fellow", "Supervisor: Prof. Ghulam Ashraf Ul Harmain"], link:"#journey"},
+    {yr:"2018", place:"Kalpakkam", f:"IN", lat:12.555, lon:80.175, z:1.12, k:"research", inst:"Indira Gandhi Centre for Atomic Research (IGCAR)", title:"M.Tech project", when:"Dec 2018 – Jun 2019",
+     items:["Low-cycle fatigue of 5000 h aged RAFM steel at 823 K", "EBSD and XRD substructure analysis with Prof. Vani Shankar", "Results later presented at CF-8 2021 (IGCAR web conference)"], link:"#journey"},
+    {yr:"2019", place:"Mandi", f:"IN", lat:31.78, lon:76.99, z:1.12, k:"study", inst:"Indian Institute of Technology Mandi", title:"PhD, Mechanical Design", when:"2019 – 2026",
+     items:["Junior Research Fellow on a DRDO composite patch-repair project", "PhD on higher-order XFEM for cracked composites, CGPA 8.46", "Presented at CDPMHM 2024, hosted at IIT Mandi"], link:"#journey"},
+    {yr:"2020", place:"Surat", f:"IN", lat:21.167, lon:72.785, z:1.12, k:"conference", online:true, inst:"SVNIT Surat", title:"ICRADM 2020 · Online", when:"July 2020",
+     items:["1st Int. Conference on Recent Advancements in Design and Manufacturing", "Held online because of COVID-19", "Paper: patch shape and size effect on scarf patch repair of aircraft panels"], link:"#conferences"},
+    {yr:"2022", place:"Jamshedpur", f:"IN", lat:22.776, lon:86.144, z:1.12, k:"conference", inst:"NIT Jamshedpur", title:"INCAM 2022", when:"November 2022",
+     items:["5th Indian Conference on Applied Mechanics", "Presented an XFEM framework for free vibration of laminated composite plates"], link:"#conferences"},
+    {yr:"2022", place:"Guwahati", f:"IN", lat:26.19, lon:91.69, z:1.12, k:"conference", inst:"IIT Guwahati", title:"ACMFMS 2022", when:"December 2022",
+     items:["8th Asian Conference on Mechanics of Functional Materials and Structures", "Paper: fatigue crack growth in FRP laminates with higher-order XFEM"], link:"#conferences"},
+    {yr:"2023", place:"Singapore", f:"SG", lat:1.335, lon:103.958, z:1.06, k:"conference", inst:"Singapore Expo", title:"Materials Today Conference 2023", when:"August 2023",
+     items:["Inaugural Materials Today Conference (Elsevier)", "Poster: multiscale modelling of CNT–polymer composites with higher-order XFEM"], link:"#conferences"},
+    {yr:"2024", place:"Bangkok", f:"TH", lat:13.82, lon:100.514, z:1.06, k:"conference", inst:"King Mongkut’s University of Technology North Bangkok", title:"EFPM 2024 · Invited speaker", when:"February 2024",
+     items:["1st Int. Conference on Eco-Friendly Fibers and Polymeric Materials", "Invited talk: higher-order XFEM for natural frequencies of cracked laminated plates"], link:"#conferences"},
+    {yr:"2024", place:"Edmonton", f:"CA", lat:53.523, lon:-113.526, z:1, k:"research", inst:"University of Alberta", title:"Visiting Doctoral Researcher", when:"Sep 2024 – Aug 2025",
+     items:["SERB–UAlberta Overseas Fellowship", "XFEM fracture of pipeline steel with Prof. Samer Adeeb", "Tensile, CT and SENB testing"], link:"#journey"},
+    {yr:"2025", place:"Hyderabad", f:"IN", lat:17.47, lon:78.37, z:1.12, k:"conference", inst:"Hyderabad International Convention Centre", title:"ASME IMECE-India 2025", when:"September 2025",
+     items:["The first ASME IMECE held in India", "Presented higher-order XFEM for free vibration of cracked composite plates"], link:"#conferences"},
+    {yr:"2026", place:"Astana", f:"KZ", lat:51.09, lon:71.40, z:1.06, k:"now", inst:"Nazarbayev University", title:"Postdoctoral Researcher", when:"Feb 2026 – present",
+     items:["BRAVE project: impact on corrugated-core CFRP sandwich panels", "Supervisors: Prof. Andrey Melnikov and Prof. Christos Spitas"], link:"#journey"}
+  ];
+  const KIND = {study:"Degree", research:"Research stay", conference:"Conference", now:"Where I am now"};
+  const VISITED = new Set(["356", "702", "764", "124", "398"]); // ISO numeric: IN SG TH CA KZ
+  const PALETTE = ["#9ed39a", "#f2d68a", "#f5b895", "#c9b8e8", "#93d5c6", "#e6c49c", "#b6d989", "#f3a9b9", "#a9c8ef"];
+  const kc = k => ({study:C.acc2, research:C.acc3, conference:C.acc, now:"#22a06b"})[k];
+  const DWELL = 5200, HOLD = 5000, TILT = 0.8, SPIN = 6; // SPIN: idle drift, degrees per second
+  const box = document.getElementById("globeBox"), canvas = document.getElementById("globe"), ctx = canvas.getContext("2d"),
+        msg = document.getElementById("globeMsg"), body = document.getElementById("wbody"), wcard = document.getElementById("wcard"),
+        bar = document.getElementById("wbar"), count = document.getElementById("globeCount"), list = document.getElementById("wstops"),
+        playBtn = document.getElementById("globePlay");
+  let W = 0, H = 0, cur = -1, rot = [-78, -20], zoom = 1, fly = null, dwellT0 = 0, last = 0, paused = reduceMotion,
+      proj, path, grat, countries, borders, visited, ready = false, booted = false, vis = false, raf = 0, drag = null;
+  const target = s => [-s.lon, -s.lat*TILT];
+  const ll = s => [s.lon, s.lat];
+
+  list.innerHTML = STOPS.map((s,i) => `<li><button type="button" class="k-${s.k}" data-i="${i}"><i></i><b>${s.yr}</b>${s.place}</button></li>`).join("");
+  const chips = [...list.querySelectorAll("button")];
+  list.addEventListener("click", e => { const b = e.target.closest("button"); if (b) select(+b.dataset.i, true); });
+  document.getElementById("globePrev").onclick = () => select(cur-1, true);
+  document.getElementById("globeNext").onclick = () => select(cur+1, true);
+  if (reduceMotion) playBtn.hidden = true;
+  playBtn.onclick = () => {
+    paused = !paused; dwellT0 = performance.now();
+    playBtn.setAttribute("aria-label", paused ? "Play the tour" : "Pause the tour");
+    playBtn.innerHTML = paused ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+  };
+
+  function renderCard(s){
+    wcard.className = "wcard k-" + s.k;
+    body.innerHTML = `
+      <div class="wk"><span class="wkind">${KIND[s.k]}</span><span class="wfl">${FLAGS[s.f]}${CNAME[s.f]}</span></div>
+      <p class="wplace">${s.place}</p>
+      <p class="winst">${esc(s.inst)}</p>
+      <p class="wttl">${esc(s.title)} <span>· ${s.when}</span></p>
+      <ul>${s.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <a class="wmore" href="${s.link}">${s.link === "#conferences" ? "All conferences" : "Full journey"} →</a>`;
+    body.classList.remove("swap"); void body.offsetWidth; body.classList.add("swap");
+  }
+
+  function select(i, user){
+    i = (i + STOPS.length) % STOPS.length;
+    const prev = cur, s = STOPS[i], now = performance.now(); cur = i;
+    renderCard(s);
+    chips.forEach((b,j) => b.setAttribute("aria-current", j===i));
+    count.textContent = `${i+1} / ${STOPS.length}`;
+    const r1 = target(s);
+    if (!ready || reduceMotion || prev < 0){ rot = r1; zoom = s.z; fly = null; dwellT0 = now + (user ? HOLD : 0); draw(now); return; }
+    const dist = d3.geoDistance([-rot[0], -rot[1]/TILT], ll(s));
+    const dl = ((r1[0] - rot[0]) % 360 + 540) % 360 - 180;
+    fly = {t0:now, dur:900 + 1150*dist, r0:rot.slice(), dl, dp:r1[1]-rot[1], z0:zoom, z1:s.z, dip:Math.min(.22, dist*.15), seq:i === prev+1, user};
+  }
+
+  function size(){
+    const r = box.getBoundingClientRect(), d = Math.min(devicePixelRatio||1, 2);
+    W = r.width; H = r.height; canvas.width = Math.max(1, Math.round(W*d)); canvas.height = Math.max(1, Math.round(H*d)); ctx.setTransform(d,0,0,d,0,0);
+  }
+
+  function pinXY(s){
+    if (d3.geoDistance(ll(s), [-rot[0], -rot[1]]) > Math.PI/2 - .04) return null;
+    return proj(ll(s));
+  }
+
+  function draw(now = performance.now()){
+    ctx.clearRect(0,0,W,H);
+    if (!ready) return;
+    const R = Math.min(W, H)*.42*zoom, cx = W/2, cy = H/2 + 6;
+    proj.scale(R).translate([cx, cy]).rotate(rot);
+    const dark = C.surf.toLowerCase() !== "#ffffff";
+    const halo = ctx.createRadialGradient(cx, cy, R*.92, cx, cy, R*1.16);
+    halo.addColorStop(0, dark ? "#3d8bfd55" : "#5aa9e655"); halo.addColorStop(1, "#5aa9e600");
+    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(cx, cy, R*1.16, 0, 2*Math.PI); ctx.fill();
+    // ocean: lit from the upper left
+    const sea = ctx.createRadialGradient(cx - R*.4, cy - R*.45, R*.05, cx, cy, R);
+    if (dark){ sea.addColorStop(0, "#2f6fae"); sea.addColorStop(.6, "#1b4b80"); sea.addColorStop(1, "#0f2c52"); }
+    else { sea.addColorStop(0, "#bfe6fb"); sea.addColorStop(.55, "#7cc0ea"); sea.addColorStop(1, "#3f8fcc"); }
+    ctx.beginPath(); path({type:"Sphere"}); ctx.fillStyle = sea; ctx.fill();
+    ctx.beginPath(); path(grat); ctx.strokeStyle = dark ? "#ffffff1a" : "#ffffff66"; ctx.lineWidth = .6; ctx.stroke();
+    // countries in soft map colours; the ones I have been to stand out
+    ctx.globalAlpha = dark ? .78 : 1;
+    countries.forEach((f, i) => { ctx.beginPath(); path(f); ctx.fillStyle = PALETTE[i % PALETTE.length]; ctx.fill(); });
+    ctx.globalAlpha = 1;
+    ctx.beginPath(); path(visited); ctx.fillStyle = A(C.acc, dark ? .4 : .28); ctx.fill();
+    ctx.beginPath(); path(borders); ctx.strokeStyle = dark ? "#0f2c52aa" : "#ffffffcc"; ctx.lineWidth = .6; ctx.stroke();
+    ctx.beginPath(); path(visited); ctx.strokeStyle = C.acc; ctx.lineWidth = 1.1; ctx.stroke();
+    // soft shade on the far side for a rounder look
+    const shade = ctx.createRadialGradient(cx - R*.3, cy - R*.35, R*.4, cx, cy, R*1.02);
+    shade.addColorStop(0, "#00000000"); shade.addColorStop(1, dark ? "#00000066" : "#0b2a4a33");
+    ctx.beginPath(); path({type:"Sphere"}); ctx.fillStyle = shade; ctx.fill();
+    ctx.strokeStyle = dark ? "#5aa9e666" : "#3f8fcc88"; ctx.lineWidth = 1; ctx.stroke();
+    // travel path up to the current stop
+    ctx.lineCap = "round";
+    for (let k = 1; k <= cur; k++){
+      const a = ll(STOPS[k-1]); let b = ll(STOPS[k]); const live = k === cur;
+      if (live && fly && fly.seq) b = d3.geoInterpolate(a, b)(ease(clamp((now - fly.t0)/fly.dur, 0, 1)));
+      ctx.setLineDash(live ? [] : [3, 4]); ctx.strokeStyle = A(C.acc, live ? .9 : .5); ctx.lineWidth = live ? 2 : 1.3;
+      ctx.beginPath(); path({type:"LineString", coordinates:[a, b]}); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    // pins (current stop drawn last, on top)
+    const order = STOPS.map((s,i) => i).filter(i => i !== cur).concat(cur >= 0 ? [cur] : []);
+    for (const i of order){
+      const s = STOPS[i], p = pinXY(s); if (!p) continue;
+      const col = kc(s.k), on = i === cur && !fly;
+      if (on || s.k === "now"){
+        for (const off of on ? [0, .5] : [0]){
+          const t = ((now/1800) + off) % 1;
+          ctx.beginPath(); ctx.arc(p[0], p[1], 6 + 20*t, 0, 2*Math.PI); ctx.strokeStyle = A(col, (1-t)*.8); ctx.lineWidth = 2; ctx.stroke();
+        }
+      }
+      ctx.beginPath(); ctx.arc(p[0], p[1], on ? 6.5 : 4.2, 0, 2*Math.PI);
+      // online events get a hollow pin
+      ctx.fillStyle = s.online ? C.surf : col; ctx.fill();
+      ctx.strokeStyle = s.online ? col : C.surf; ctx.lineWidth = s.online ? 2.4 : 1.8; ctx.stroke();
+    }
+    // name tag on the current stop
+    const s = STOPS[cur], p = s && !fly ? pinXY(s) : null;
+    if (p){
+      const txt = s.place + (s.k === "now" ? " · I am here" : s.online ? " · online" : "");
+      ctx.font = font(700, 13); const tw = ctx.measureText(txt).width, bw = tw + 20, bh = 26;
+      let x = p[0] + 14, y = p[1] - bh - 10; if (x + bw > W - 8) x = p[0] - bw - 14; if (y < 8) y = p[1] + 12;
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, bw, bh, 8) : ctx.rect(x, y, bw, bh);
+      ctx.fillStyle = C.surf; ctx.fill(); ctx.strokeStyle = kc(s.k); ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = C.text; ctx.textBaseline = "middle"; ctx.fillText(txt, x + 10, y + bh/2 + .5); ctx.textBaseline = "alphabetic";
+    }
+  }
+
+  function frame(now){
+    if (!vis){ raf = 0; return; }
+    const dt = last ? Math.min(.1, (now - last)/1000) : 0; last = now;
+    // keep the globe turning slowly while it rests on a stop, so it never looks frozen
+    if (!fly && !drag && !paused) rot = [rot[0] - SPIN*dt, rot[1]];
+    if (fly){
+      const t = clamp((now - fly.t0)/fly.dur, 0, 1), e = ease(t);
+      rot = [fly.r0[0] + fly.dl*e, fly.r0[1] + fly.dp*e];
+      zoom = fly.z0 + (fly.z1 - fly.z0)*e - fly.dip*Math.sin(Math.PI*t);
+      if (t >= 1){ dwellT0 = now + (fly.user ? HOLD : 0); fly = null; }
+      bar.style.transform = "scaleX(0)";
+    } else if (!paused && !drag){
+      const k = (now - dwellT0)/DWELL;
+      bar.style.transform = `scaleX(${clamp(k, 0, 1)})`;
+      if (k >= 1) select(cur + 1);
+    } else bar.style.transform = "scaleX(0)";
+    draw(now); raf = requestAnimationFrame(frame);
+  }
+  const run = () => { if (ready && vis && !reduceMotion && !raf){ dwellT0 = Math.max(dwellT0, performance.now()); last = 0; raf = requestAnimationFrame(frame); } };
+
+  // drag to spin, click a pin to jump there
+  const hit = e => { const r = canvas.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; let best = -1, bd = 16;
+    STOPS.forEach((s,i) => { const p = pinXY(s); if (!p) return; const d = Math.hypot(p[0]-x, p[1]-y); if (d < bd){ bd = d; best = i; } }); return best; };
+  canvas.addEventListener("pointerdown", e => {
+    if (!ready) return;
+    drag = {x:e.clientX, y:e.clientY, r0:rot.slice(), moved:false}; canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener("pointermove", e => {
+    if (!ready) return;
+    if (!drag){ canvas.style.cursor = hit(e) >= 0 ? "pointer" : ""; return; }
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.moved && Math.hypot(dx, dy) < 4) return;
+    drag.moved = true; fly = null; canvas.classList.add("drag");
+    const k = 57.3/(Math.min(W, H)*.42*zoom);
+    rot = [drag.r0[0] + dx*k, clamp(drag.r0[1] - dy*k, -75, 75)];
+    if (reduceMotion) draw();
+  });
+  const endDrag = e => {
+    if (!drag) return;
+    const moved = drag.moved; drag = null; canvas.classList.remove("drag");
+    if (!moved && e.type === "pointerup"){ const i = hit(e); if (i >= 0) return select(i, true); }
+    dwellT0 = performance.now() + HOLD;
+  };
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", endDrag);
+
+  const load = src => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  async function boot(){
+    booted = true;
+    try {
+      const cdn = "https://cdn.jsdelivr.net/npm/";
+      await load(cdn + "d3-array@3.2.4/dist/d3-array.min.js");
+      await load(cdn + "d3-geo@3.1.1/dist/d3-geo.min.js");
+      await load(cdn + "topojson-client@3.1.0/dist/topojson-client.min.js");
+      const w = await (await fetch(cdn + "world-atlas@2.0.2/countries-110m.json")).json();
+      countries = topojson.feature(w, w.objects.countries).features;
+      borders = topojson.mesh(w, w.objects.countries, (a, b) => a !== b);
+      visited = {type:"FeatureCollection", features:countries.filter(f => VISITED.has(f.id))};
+      proj = d3.geoOrthographic().clipAngle(90).precision(.5);
+      path = d3.geoPath(proj, ctx); grat = d3.geoGraticule10();
+      ready = true; msg.hidden = true; size(); draw(); run();
+    } catch(err){ msg.textContent = "The globe could not load. The places are listed below."; }
+  }
+
+  select(0);
+  new ResizeObserver(() => { size(); draw(); }).observe(box);
+  themeHooks.push(() => draw());
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && !booted) boot(); run(); }, {rootMargin:"250px 0px"}).observe(box);
+})();
 </script>
 <!-- visitor statistics: https://kishandwivedi.goatcounter.com (no cookies, no personal data) -->
 <script data-goatcounter="https://kishandwivedi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
