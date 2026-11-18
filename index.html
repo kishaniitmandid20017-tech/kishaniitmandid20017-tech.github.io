@@ -10,8 +10,15 @@
 <meta property="og:title" content="Dr. Kishan Dwivedi — Computational Mechanics of Composites">
 <meta property="og:description" content="Postdoctoral Researcher, Nazarbayev University. Higher-order XFEM, fracture, vibration and impact of composite structures.">
 <meta property="og:type" content="profile">
-<meta property="og:image" content="https://kishaniitmandid20017-tech.github.io/photo.jpg">
+<meta property="og:image" content="https://kishaniitmandid20017-tech.github.io/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kishan Dwivedi, Postdoctoral Researcher, Nazarbayev University. Fracture mechanics, XFEM, composites.">
 <meta property="og:url" content="https://kishaniitmandid20017-tech.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dr. Kishan Dwivedi — Computational Mechanics of Composites">
+<meta name="twitter:description" content="Postdoctoral Researcher, Nazarbayev University. Higher-order XFEM, fracture, vibration and impact of composite structures.">
+<meta name="twitter:image" content="https://kishaniitmandid20017-tech.github.io/og-card.jpg">
 <link rel="canonical" href="https://kishaniitmandid20017-tech.github.io/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23a3122a'/><text x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'>KD</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -250,6 +257,11 @@ section.block{padding:62px 0;border-top:1px solid var(--line)}
 .pub a.doi{font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;margin-left:auto}
 .pub a.doi svg{width:13px;height:13px}
 .pub[hidden]{display:none}
+.pub-more{font:inherit;font-size:15px;font-weight:600;display:block;width:100%;margin-top:12px;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--accent);cursor:pointer}
+.pub-more:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.pub-more[hidden]{display:none}
+/* comfortable tap targets on touch screens */
+@media (pointer:coarse){.pub a.doi,.tile a.more{min-height:40px;display:inline-flex;align-items:center}}
 .empty{color:var(--muted);padding:18px 0}
 .note{font-size:13px;color:var(--faint);margin-top:14px}
 @media (max-width:560px){.pub{grid-template-columns:1fr;gap:4px;padding:16px}.pub .yr{font-size:15px}.pub-right{min-width:100%}.pub-search{max-width:none}.pub a.doi{margin-left:0}}
@@ -477,7 +489,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
       <div class="stats">
         <div class="stat"><b data-count="16">16</b><span class="lbl">Publications</span><span class="sub">7 journal articles <em>✦</em> 4 chapters<br>4 conference papers <em>✦</em> 1 under review</span></div>
-        <div class="stat"><b data-count="148" data-suffix="+">148+</b><span class="lbl">Citations</span><span class="sub">Google Scholar<br>October 2026</span></div>
+        <div class="stat"><b data-count="152" data-suffix="+">152+</b><span class="lbl">Citations</span><span class="sub">Google Scholar<br>November 2026</span></div>
         <div class="stat"><b data-count="7">7</b><span class="lbl">h-index</span><span class="sub">Google Scholar · i10-index = 5<br>2 papers in Eng. Fract. Mech.</span></div>
         <div class="stat"><b data-count="8">8</b><span class="lbl">Conferences</span><span class="sub">India <em>✦</em> Singapore<br>Thailand</span></div>
       </div>
@@ -730,7 +742,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
   <section class="block" id="publications">
     <div class="wrap">
-      <div class="sec-head"><h2>Publications</h2><p>Citation counts from <a href="https://scholar.google.com/citations?user=7P_I0AYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>, October 2026.</p></div>
+      <div class="sec-head"><h2>Publications</h2><p>Citation counts from <a href="https://scholar.google.com/citations?user=7P_I0AYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>, November 2026.</p></div>
       <div class="pub-tools">
         <div class="filters" role="group" aria-label="Filter publications">
           <button type="button" data-f="all" aria-pressed="true">All<span class="n"></span></button>
@@ -745,8 +757,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         </div>
       </div>
       <ol class="pubs" id="pubList"></ol>
+      <button class="pub-more" id="pubMore" type="button" hidden>Show all publications</button>
       <p class="empty" id="pubEmpty" hidden>No publications match that search.</p>
-      <p class="note">Quartiles and SJR are SCImago/Scopus values for the latest available year and change annually. Citation counts from Google Scholar, October 2026.</p>
+      <p class="note">Quartiles and SJR are SCImago/Scopus values for the latest available year and change annually. Citation counts from Google Scholar, November 2026.</p>
     </div>
   </section>
 
@@ -847,16 +860,16 @@ const pubs = [
   {t:"journal", y:2025, c:3, title:"XFEM fracture parameters are not unique for consistent global behavior in tensile, CT, and SENB specimen",
    au:"Kishan Dwivedi, Saher Attia, Himanshu Pathak, Samer Adeeb", v:"Engineering Fracture Mechanics", d:"325, 111351", url:"https://doi.org/10.1016/j.engfracmech.2025.111351", first:true},
   {t:"journal", y:2025, c:7, title:"Accelerating composite sandwich plate analysis: A hybrid higher-order XFEM and ANN approach for natural frequency prediction",
-   au:"Siddharth Suman, Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Mechanics Based Design of Structures and Machines", d:"53, 4711–4723", url:"https://doi.org/10.1080/15397734.2025.2454351"},
-  {t:"journal", y:2023, c:33, title:"Free flexural vibration of cracked composite laminated plate using higher-order XFEM",
-   au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak, Mohammad Talha, Rajat Upadhaya", v:"Engineering Fracture Mechanics", d:"289, 109420", url:"https://www.sciencedirect.com/science/article/abs/pii/S0013794423003788", first:true},
-  {t:"journal", y:2023, c:10, title:"Variable node higher-order XFEM for fracture modelling in orthotropic material",
-   au:"Kishan Dwivedi, Himanshu Pathak, Sachin Kumar", v:"Proceedings of the IMechE, Part C: Journal of Mechanical Engineering Science", d:"1–25", url:"https://journals.sagepub.com/doi/10.1177/09544062221148879", first:true},
-  {t:"journal", y:2023, c:21, title:"Free vibration of porous functionally graded plate with crack using stochastic XFEM approach",
-   au:"Ahmed Raza, Kishan Dwivedi, Himanshu Pathak, Mohammad Talha", v:"Journal of Vibration Engineering & Technologies", d:"", url:"https://link.springer.com/article/10.1007/s42417-023-01223-w"},
-  {t:"journal", y:2022, c:32, title:"XFEM-ANN approach to predict the fatigue performance of a composite patch repaired aluminium panel",
+   au:"Siddharth Suman, Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Mechanics Based Design of Structures and Machines", d:"53(6), 4711–4723", url:"https://doi.org/10.1080/15397734.2025.2454351"},
+  {t:"journal", y:2023, c:34, title:"Free flexural vibration of cracked composite laminated plate using higher-order XFEM",
+   au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak, Mohammad Talha, Rajat Upadhyaya", v:"Engineering Fracture Mechanics", d:"289, 109420", url:"https://www.sciencedirect.com/science/article/abs/pii/S0013794423003788", first:true},
+  {t:"journal", y:2023, c:10, title:"Variable node higher-order XFEM for fracture modeling in orthotropic material",
+   au:"Kishan Dwivedi, Himanshu Pathak, Sachin Kumar", v:"Proceedings of the IMechE, Part C: Journal of Mechanical Engineering Science", d:"237(16), 3692–3716", url:"https://journals.sagepub.com/doi/10.1177/09544062221148879", first:true},
+  {t:"journal", y:2024, c:22, title:"Free vibration of porous functionally graded plate with crack using stochastic XFEM approach",
+   au:"Ahmed Raza, Kishan Dwivedi, Himanshu Pathak, Mohammad Talha", v:"Journal of Vibration Engineering & Technologies", d:"12(4), 5849–5864", url:"https://link.springer.com/article/10.1007/s42417-023-01223-w"},
+  {t:"journal", y:2022, c:33, title:"XFEM-ANN approach to predict the fatigue performance of a composite patch repaired aluminium panel",
    au:"Siddharth Suman, Kishan Dwivedi, Samanvay Anand, Himanshu Pathak", v:"Composites Part C: Open Access", d:"9, 100326", url:"https://www.sciencedirect.com/science/article/pii/S2666682022000895", oa:true},
-  {t:"journal", y:2022, c:22, title:"Fatigue crack growth in CNT reinforced polymer composite",
+  {t:"journal", y:2022, c:23, title:"Fatigue crack growth in CNT-reinforced polymer composite",
    au:"Kishan Dwivedi, Gaurav Arora, Himanshu Pathak", v:"Journal of Micromechanics and Molecular Physics", d:"7, 173–184", url:"https://www.worldscientific.com/doi/abs/10.1142/S242491302241003X", first:true},
 
   {t:"review", y:2026, c:0, title:"Oblique impact performance of corrugated-double-sinusoidal-core composite sandwich panels",
@@ -876,27 +889,27 @@ const pubs = [
   {t:"chapter", y:2024, c:4, title:"An extended finite element framework for free vibration analysis of laminated composite plates",
    au:"Kishan Dwivedi, Ahmed Raza, Himanshu Pathak", v:"Advances in Applied Mechanics (INCAM 2022, NIT Jamshedpur), Springer", d:"", url:"https://link.springer.com/chapter/10.1007/978-981-97-0472-9_5", first:true},
   {t:"chapter", y:2024, c:1, title:"Higher order enrichment functions for fracture simulation in isotropic and orthotropic material medium",
-   au:"Kishan Dwivedi, Himanshu Pathak", v:"Enriched Numerical Techniques, Elsevier", d:"", url:"https://www.sciencedirect.com/science/article/abs/pii/B9780443153624000206", first:true},
-  {t:"chapter", y:2024, c:0, title:"Material modeling and simulation approach for polymer composite",
-   au:"Abhishek Kumar, Kishan Dwivedi, Himanshu Pathak, Sunny Zafar", v:"Lightweight Composites: Mechanics, Processing, Properties, and Applications, Elsevier", d:"", url:"https://doi.org/10.1016/B978-0-443-18852-7.00002-6"}
+   au:"Kishan Dwivedi, Himanshu Pathak", v:"Enriched Numerical Techniques, Elsevier", d:"pp. 33–62", url:"https://www.sciencedirect.com/science/article/abs/pii/B9780443153624000206", first:true},
+  {t:"chapter", y:2026, c:0, title:"Material modeling and simulation approach for polymer composite",
+   au:"Abhishek Kumar Gupta, Kishan Dwivedi, Himanshu Pathak, Sunny Zafar", v:"Lightweight Composites: Mechanics, Processing, Properties, and Applications, Elsevier", d:"pp. 95–131", url:"https://doi.org/10.1016/B978-0-443-18852-7.00002-6"}
 ];
 const LABEL = {journal:"Journal", chapter:"Book chapter", conference:"Conference", review:"In review"};
 // stylised cover tile per venue; q/sjr = SCImago/Scopus quartile and SJR where confirmed
 const COVERS = [
-  // img = the publisher's own cover (local copy, or the publisher's CDN); the coloured tile shows if it fails to load
+  // img = the publisher's own cover (local copy in covers/); the coloured tile shows if it fails to load
   [/^Engineering Fracture/,          {a:"EFM", p:"Elsevier", c1:"#f2861e", c2:"#a8480a", q:"Q1", sjr:"1.26", img:"covers/efm.jpg"}],
-  [/^Mechanics Based Design/,        {a:"MBDSM", p:"Taylor & Francis", c1:"#335a8e", c2:"#14284a", q:"Q2", sjr:"0.59", img:"https://www.tandfonline.com/cms/asset/85a4879c-849f-4a26-a9c0-9e6289c8b16d/lmbd20.v054.i01.cover.jpg"}],
+  [/^Mechanics Based Design/,        {a:"MBDSM", p:"Taylor & Francis", c1:"#335a8e", c2:"#14284a", q:"Q2", sjr:"0.59", img:"covers/mbdsm.jpg"}],
   [/^Proceedings of the IMechE/,     {a:"IMechE C", p:"SAGE", c1:"#2b7bb0", c2:"#123f60", q:"Q2", sjr:"0.44", img:"covers/imeche-c.jpg"}],
-  [/^Journal of Vibration/,          {a:"JVET", p:"Springer", c1:"#3f7896", c2:"#183747", q:"Q2", sjr:"0.55", img:"https://media.springernature.com/w180/springer-static/cover/journal/42417.jpg"}],
+  [/^Journal of Vibration/,          {a:"JVET", p:"Springer", c1:"#3f7896", c2:"#183747", q:"Q2", sjr:"0.55", img:"covers/jvet.jpg"}],
   [/^Composites Part C/,             {a:"Comp. C", p:"Elsevier", c1:"#2f9a78", c2:"#135741", q:"Q1", sjr:"1.15", img:"covers/compc.jpg"}],
   [/^Journal of Micromechanics/,     {a:"JMMP", p:"World Sci.", c1:"#a3284f", c2:"#4f0f24", img:"covers/jmmp.jpg"}],
   [/^International Journal of Damage/, {a:"IJDM", p:"SAGE", c1:"#c8467a", c2:"#7a1f45", img:"covers/ijdm.jpg"}],
   [/^IOP/,                           {a:"IOP MSE", p:"IOP", c1:"#5ba3dc", c2:"#1d5994"}],
   [/ASME/,                           {a:"ASME IMECE", p:"ASME", c1:"#1f4e8c", c2:"#0b2447"}],
   [/Creep/,                          {a:"CF-8", p:"IGCAR", c1:"#737b89", c2:"#353a43"}],
-  [/Springer Proceedings in Materials/, {a:"SPM", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"https://media.springernature.com/w180/springer-static/cover/book/978-981-96-5281-5.jpg"}],
-  [/LNME/,                           {a:"LNME", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"https://media.springernature.com/w180/springer-static/cover/book/978-981-99-5919-8.jpg"}],
-  [/Springer/,                       {a:"INCAM", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"https://media.springernature.com/w180/springer-static/cover/book/978-981-97-0472-9.jpg"}],
+  [/Springer Proceedings in Materials/, {a:"SPM", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"covers/spm-cdpmhm.jpg"}],
+  [/LNME/,                           {a:"LNME", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"covers/lnme-acmfms.jpg"}],
+  [/Springer/,                       {a:"INCAM", p:"Springer", c1:"#f5c24a", c2:"#cf8410", ink:"#2a1d05", img:"covers/incam.jpg"}],
   [/Enriched Numerical/,             {a:"Book", p:"Elsevier", c1:"#f2861e", c2:"#a8480a", img:"covers/enriched-numerical.jpg"}],
   [/Lightweight Composites/,         {a:"Book", p:"Elsevier", c1:"#f2861e", c2:"#a8480a", img:"covers/lightweight-composites.jpg"}],
   [/./,                              {a:"Draft", p:"In progress", c1:"#a3122a", c2:"#d9822b"}]
@@ -932,15 +945,24 @@ function renderPubs(){
     </li>`; }).join("");
   applyPubFilter();
 }
+// on phones the full list is very long: show the first few, with a button for the rest
+const PUB_LIMIT = 6, pubMore = document.getElementById("pubMore"), narrowScreen = matchMedia("(max-width:700px)");
+let pubsOpen = false;
 function applyPubFilter(){
   const q = search.value.trim().toLowerCase();
+  const cap = narrowScreen.matches && !pubsOpen && curF==="all" && !q;
   let shown = 0;
   list.querySelectorAll(".pub").forEach(li => {
     const ok = (curF==="all" || li.dataset.t===curF) && (!q || li.textContent.toLowerCase().includes(q));
-    li.hidden = !ok; if (ok) shown++;
+    if (ok) shown++;
+    li.hidden = !ok || (cap && shown > PUB_LIMIT);
   });
+  pubMore.hidden = !(cap && shown > PUB_LIMIT);
+  pubMore.textContent = "Show all " + shown + " publications";
   document.getElementById("pubEmpty").hidden = shown > 0;
 }
+pubMore.addEventListener("click", () => { pubsOpen = true; applyPubFilter(); });
+narrowScreen.addEventListener("change", applyPubFilter);
 const btns = document.querySelectorAll(".filters button");
 btns.forEach(b => {
   const f = b.dataset.f;
